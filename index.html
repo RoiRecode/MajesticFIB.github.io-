@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIB Majestic RP - Официальный сайт</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #4a90e2;
+            --primary-dark: #004e92;
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --dark-accent: #1e1e1e;
+            --text: #e0e0e0;
+            --text-light: #ffffff;
+            --accent: #ff3a3a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+      
+        .fib-lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .light {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            animation: pulse 8s infinite ease-in-out;
+        }
+        
+        .light-blue {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .light-red {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            top: 60%;
+            left: 70%;
+            animation-delay: 1s;
+        }
+        
+        .light-blue-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--primary);
+            top: 70%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+        
+        .light-red-2 {
+            width: 350px;
+            height: 350px;
+            background: var(--accent);
+            top: 30%;
+            left: 80%;
+            animation-delay: 3s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+        }
+        
+       
+        .navbar {
+            background-color: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1.5rem;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .logo:hover {
+            box-shadow: 0 0 30px rgba(74, 144, 226, 0.6);
+            transform: rotate(15deg);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--text-light);
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: left;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.2), transparent);
+            transition: width 0.6s ease;
+            z-index: -1;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-light);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            background-color: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--primary-dark);
+            padding-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -3px;
+            left: 0;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.6s ease;
+        }
+        
+        h2:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            cursor: pointer;
+            padding: 1rem;
+            background: linear-gradient(90deg, rgba(74, 144, 226, 0.2), transparent);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.4s ease;
+        }
+        
+        h3:hover {
+            background: linear-gradient(90deg, rgba(74, 144, 226, 0.3), transparent);
+            padding-left: 1.5rem;
+        }
+        
+        h3:hover::before {
+            width: 8px;
+        }
+        
+        h3::after {
+            content: '+';
+            font-size: 2rem;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.4s ease;
+        }
+        
+        h3.active::after {
+            content: '-';
+            color: var(--accent);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .code-section {
+            background: rgba(45, 45, 45, 0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.4s ease;
+        }
+        
+        .code-section:hover {
+            background: rgba(45, 45, 45, 0.7);
+            transform: translateX(5px);
+        }
+        
+        .article-item {
+            background: rgba(51, 51, 51, 0.6);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+        
+        .article-item:hover {
+            background: rgba(51, 51, 51, 0.8);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.5rem;
+            background: rgba(37, 37, 37, 0);
+            border-radius: 0 0 8px 8px;
+            transition: all 0.5s ease-out;
+        }
+        
+        .collapsible-content.active {
+            max-height: 1000px;
+            padding: 1.5rem;
+            background: rgba(37, 37, 37, 0.7);
+        }
+        
+        .rule-content {
+            margin-top: 1rem;
+            padding: 1.5rem;
+            background: rgba(51, 51, 51, 0.6);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .faq-item {
+            background: rgba(45, 45, 45, 0.6);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-item:hover {
+            background: rgba(45, 45, 45, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        a:hover::after {
+            width: 100%;
+        }
+        
+ 
+        footer {
+            background: linear-gradient(180deg, transparent, rgba(26, 26, 26, 0.9));
+            color: var(--text);
+            text-align: center;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+            animation: rainbowBorder 8s linear infinite;
+        }
+        
+       
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes rainbowBorder {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 1rem;
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 1rem;
+            }
+            
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="fib-lights">
+        <div class="light light-blue"></div>
+        <div class="light light-red"></div>
+        <div class="light light-blue-2"></div>
+        <div class="light light-red-2"></div>
+    </div>
+    
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="Логотип FIB" class="logo">
+            <h1>FIB Majestic RP</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#legislation">Законодательная база</a></li>
+            <li><a href="#rules">Основные правила</a></li>
+            <li><a href="#faq">Частые вопросы</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="home" class="animate__animated animate__fadeIn">
+            <h2>Добро пожаловать в Федеральное Бюро Расследований</h2>
+            <p>Официальный сайт фракции FIB на проекте Majestic RP. Здесь вы найдете всю необходимую информацию для новичков и действующих сотрудников.</p>
+        </section>
+        
+        <section id="legislation" class="animate__animated animate__fadeIn animate__delay-1s">
+            <h2>Законодательная база</h2>
+            
+            <div class="code-section">
+                <h4>Уголовный кодекс</h4>
+                <p>Основной закон, регулирующий уголовные преступления и наказания в штате Сан-Андреас.</p>
+                
+                <div class="article-item animate__animated animate__zoomIn">
+                    <h4>Ссылка на уголовный кодекс</h4>
+                    <p><a href="#">https://forum.majestic-rp.ru/threads/ugolovnyi-kodeks-shtata-san-andreas.2190757/</a></p>
+                    
+                    <h2>Частые статьи:</h2>
+                    <p> 
+                        Статья 17.1 ★★★★★ (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Посягательство на жизнь сотрудника правоохранительного органа, военнослужащего, а равно их близких в связи с исполнением им своих должностных обязанностей либо из мести за такую деятельность,
+Наказание: 5 лет лишения свободы.
+                    </p>
+                    <p>
+                        Статья 17.2 ★★★★ (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Применение насилия, не опасного для жизни или здоровья, либо угроза применения насилия в отношении сотрудника правоохранительных органов, военнослужащего, а равно их близких в связи с исполнением им своих должностных обязанностей либо из мести за такую деятельность,
+Наказание: 4 года лишения свободы.
+                    <p>
+                        Статья 17.3 ★★★ (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Оскорбление представителя власти при исполнении им своих должностных обязанностей или в связи с их исполнением.
+Примечание: Оскорбление — унижение чести и достоинства человека, выраженное в неприличной или иной, противоречащей общепринятым нормам морали и нравственности, форме. Оскорбление может быть нанесено в виде высказывания (устно, письменно) или в виде действия (плевок, неприличный жест.
+Наказание: 3 года лишения свободы или уголовный штраф в размере от 20.000$ до 50.000$.
+                    </p>
+                    <p>
+                        татья 17.6 ★★★ (РЕГИОНАЛЬНЫЙ/ФЕДЕРАЛЬНЫЙ) Неповиновение законному распоряжению или требованию правомочного лица, либо воспрепятствование исполнению им служебных обязанностей.
+Наказание: 3 года лишения свободы или уголовный штраф в размере от 20.000$ до 60.000$.
+                    </p>
+                    <p>
+                        Статья 17.7 ★★★ (РЕГИОНАЛЬНЫЙ/ФЕДЕРАЛЬНЫЙ) Отказ от оплаты штрафа, выписанного правомочным лицом, а равно отказ от возмещения ущерба согласно законодательству
+Наказание: 3 года лишения свободы или уголовный штраф в размере от 20.000$ до 60.000$.
+Примечание: отказом от оплаты штрафа считается:​
+                    </p>
+                    <p>
+                    Статья 6.1 (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Нанесение особо тяжких телесных повреждений,​
+​
+ч. 1 ★★★ Умышленное нанесение побоев или совершение иных насильственных действий, причинивших физическую боль либо телесные повреждения легкой или средней тяжести,
+Наказание: 3 года лишения свободы.
+ч. 2 ★★★★ Умышленное нанесение особо тяжких телесных повреждений,
+Наказание: 4 года лишения свободы.
+ч. 3 ★★★ Нанесение особо тяжких телесных повреждений по неосторожности/в состоянии аффекта,
+Наказание: 3 года лишения свободы.
+
+                    </p>
+                    <p>
+                        
+Статья 6.2 (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Убийство, то есть причинение смерти другому человеку,
+ч. 1 ★★★★ Умышленное причинение смерти другому человеку
+Наказание: 4 года лишения свободы.
+ч. 2 ★★★ Причинение смерти другому человеку по неосторожности/в состоянии аффекта
+Наказание: 3 года лишения свободы.
+                    </p>
+                    <p>
+                        Статья 6.3 ★★★★★ (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Тяжкое убийство, то есть убийство двух или более лиц, лица или его близких в связи с осуществлением данным лицом служебной деятельности; совершенное с особой жестокостью; совершенное общеопасным способом; совершенное группой лиц; из корыстных побуждений или по найму.
+Наказание: 5 лет лишения свободы.
+                    </p>
+                    <p>
+                        Статья 6.6 ★★★ (РЕГИОНАЛЬНЫЙ/ФЕДЕРАЛЬНЫЙ) Угроза убийством или причинением тяжкого вреда здоровью, если имелись основания опасаться осуществления этой угрозы,
+Наказание: 3 года лишения свободы, либо уголовный штраф в размере от $30.000 до $50.000.
+                    </p>
+                    <p>
+                        Статья 12.7 (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Незаконное проникновение и/или нахождение в соответствии с законодательством Штата Сан-Андреас,​
+ч.1 ★★★ Незаконное проникновение и/или нахождение на охраняемом объекте в соответствие с законодательством Штата Сан-Андреас​
+Наказание: 3 года лишения свободы, либо уголовный штраф в размере от 20.000$ до 50.000$.​
+ч.2 ★★★★ Незаконное проникновение и/или нахождение на особо охраняемом объекте в соответствии с законодательством Штата Сан-Андреас,​
+Наказание: от 4 до 5 лет лишения свободы, либо уголовный штраф в размере от 60.000$ до 80.000$.​
+ч.3 ★★★★★ Деяние, предусмотренное частями 1, 2 настоящей статьи, совершённые должностным лицом,​
+Наказание: 5 лет лишения свободы, либо уголовный штраф в размере от 60.000$ до 80.000$.​
+                    </p>
+                    <p>
+                        
+Статья 12.8 ★★★★ (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Незаконный оборот оружия.
+ч. 1 Незаконное приобретение, передача, сбыт, перевозка в автомобиле или ином транспортном средстве любых видов оружия, спец.средств и боеприпасов.
+Наказание: 4 года лишения свободы или штраф в размере от $10000 до $30000.
+ч. 2 Незаконное хранение, ношение или использование любых видов оружия, спец.средств и боеприпасов.
+Наказание: 4 года лишения свободы или штраф в размере от $20000 до $40000.
+
+                    </p>
+                    <p>
+                        Статья 12.8.1 ★★★★★ (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Использование, ношение, хранение гражданскими лицами спец. средств государственного образца: бронежилет, тазер, дубинка, и прочее государственное имущество, включая медицинское оборудование, имеющие серийные номера государственного образца,
+Наказание: 5 лет лишения свободы
+                    </p>
+                    <p>
+                        Статья 15.1.1 ★★★★★ (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Злоупотребление должностными полномочиями,
+ч. 1 Использование должностным лицом своих полномочий вопреки интересам службы, если это деяние повлекло существенное нарушение прав и законных интересов граждан или организаций, либо охраняемых законом интересов общества или государства.
+Наказание: 5 лет лишения свободы или уголовный штраф в размере от 50.000$ до 100.000$.
+ч. 2 Использование должностным лицом своих полномочий для вмешательства или воспрепятствования процессу задержания или непосредственно аресту, а также процессу разбирательства.
+Наказание: 5 лет лишения свободы или уголовный штраф в размере от 40.000$ до 90.000$.
+ч. 3 Деяние, предусмотренные частями 1 и 2 настоящей статьи, если они совершены сотрудником органа (отдела), уполномоченного осуществлять деятельность по расследованию должностных преступлений,
+Наказание: 5 лет лишения свободы.
+
+                    </p>
+                    <p>
+                        Статья 15.6 (ФЕДЕРАЛЬНЫЙ/РЕГИОНАЛЬНЫЙ) Халатность
+ч. 1 ★★★★ Халатность, то есть неисполнение или ненадлежащее исполнение должностным лицом своих обязанностей вследствие недобросовестного или небрежного отношения к службе либо обязанностей по должности, если это повлекло причинение крупного ущерба или существенное нарушение прав и законных интересов граждан или организаций либо охраняемых законом интересов общества или государства,
+Наказание: 4 года лишения свободы или штраф в размере от 40.000$ до 70.000$.
+ч. 2 ★★★★★ Деяние, предусмотренное частью первой настоящей статьи, повлекшее по неосторожности причинение тяжкого вреда здоровью или смерть человека,
+Наказание: 5 лет лет лишения свободы.
+                    </p>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="code-section">
+                <h4>Дорожный кодекс</h4>
+                <p>Правила дорожного движения и нормы поведения на дорогах штата Сан-Андреас.</p>
+                
+                <div class="article-item animate__animated animate__zoomIn">
+                    <h4>Ссылка на дорожный кодекс</h4>
+                    <p><a href="#">https://forum.majestic-rp.ru/threads/dorozhnyi-kodeks-shtata-san-andreas.2190948/</a></p>
+                    <h2>Частые статьи:</h2>
+                    <p>Статья 1. (R) Водитель должен предъявить и передать по первому требованию сотрудника правоохранительных органов свою лицензию на управление транспортным средством с соответствующей категорией, а также документ удостоверяющий личность.​
+Наказание: штраф до $5.000.​</p>
+                    <p>
+                        Статья 2.(R) Водитель обязан остановиться по требованию сотрудника правоохранительных органов и покинуть транспортное средство.​
+Наказание: штраф до $5.000.​
+                    </p>
+                    <p>
+                    Статья 4.(R) При аварии, водитель обязан остановиться и не трогаться с места. Также водитель не должен трогать и перемещать предметы связанные с происшествием​
+Наказание: штраф до $10.000.​
+                    </p>
+                    <p>
+                    Статья 37.(R) Остановка запрещается:
+                    </p>
+                    <p>а) параллельно красному бордюру;​
+Исключение: Водители автобусов во время остановок.​</p>
+                    <p>б) на пешеходных переходах и тротуаре;​</p>
+                    <p>в) на ж/д переездах, трамвайных путях, мостах, в тоннелях;​</p>
+                    <p>г) на крутых и опасных поворотах;​</p>
+                    <p>д) на перекрестках;​</p>
+                    <p>е) на служебных стоянках государственных учреждений.​</p>
+                    <p>Исключение: Сотрудник государственной структуры на автомобиле с государственными номерами. К данным парковкам относятся парковки при государственных учреждений общего доступа (Передняя парковка LSPD, Передняя парковка Капитолия и т.д)​</p>
+                    <p>Наказание: штраф до $5.000 и эвакуация транспортного средства на штрафстоянку.​</p>
+                </div>
+            </div>
+            
+            <div class="code-section">
+                <h4>Процессуальный кодекс</h4>
+                <p>Порядок проведения следственных действий, судебных процессов и других юридических процедур.</p>
+                
+                <div class="article-item animate__animated animate__zoomIn">
+                    <h4>Ссылка на процессуальный кодекс</h4>
+                    <p><a href="#">https://forum.majestic-rp.ru/threads/protsessual-nyi-kodeks-shtata-san-andreas.2190752/</a></p>
+                    
+                    <h2>Нужно знать:</h2>
+                    <p>
+                        Статья 17. Порядок задержания правомочным лицом.​
+                    </p>
+                    <p>
+                        Статья 18. Субъекты задержания
+                    </p>
+                    <p>
+                        Статья 22. Права задерживаемого
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="rules" class="animate__animated animate__fadeIn animate__delay-2s">
+            <h2>Основные правила проекта</h2>
+            
+            <h3 onclick="toggleCollapse('air-drop-content')">Война за Air Drop</h3>
+            <div class="collapsible-content" id="air-drop-content">
+                <div class="rule-content">
+                    <!-- Вставьте свой текст здесь -->
+                     <p><a href="#">https://forum.majestic-rp.ru/threads/pravila-voiny-za-airdrop.210836/</a></p>
+                    <p>1. Запрещено DB. | Ban 3-10 дней / HardBan 7-30 дней.</p>
+                    <p>2. На территории ВЗА запрещено вождение любого транспорта. | Demorgan 30-60 минут.</p>
+                    <p>3. Участники, которые находятся вне зоны ВЗА, обязаны стремиться попасть к AirDrop'у, не задерживаясь на нейтральной территории. | Demorgan 45-90 минут.</p>
+                    <p>4. Запрещено использование heavy sniper, heavy sniper mk2, тазера, наручников, стяжек, веревок и дронов, ношение тепловизоров. | Demorgan 90 минут / Ban / HardBan 3-5 дней + изъятие предмета.</p>
+                    <p>5. Запрещено покидать игру во время ВЗА. | WARN / HardBan 2-4 дня.</p>
+                    <p>6. Запрещено использование анимаций. | Demorgan 35-90 минут / WARN.
+Исключение: функциональное использование "ползать", "присесть"..</p>
+                    <p>7. Запрещено перехватывать / намеренно удерживать вражескую матовозку. | Demorgan 60-100 минут + изъятие полученного.</p>
+                    <p>8. Государственные силовые структуры могут принимать участие в ВЗА, которое происходит в: 00:00, 04:00, 08:00, 12:00. | Demorgan 45 минут.
+Примечание: все полученные предметы сотрудники государственных организаций обязаны положить на склад, в случае отсутствия данного действия, оно будет расцениваться как слив склада.
+                 </p>
+                 <p>
+                    9. Окончанием ВЗА считается нахождение 1 фракции / семьи на территории (в конце мероприятия).
+Пояснение: территорией ВЗА считается как функциональная, так и прилегающая к ней зона.
+                 </p>
+                </div>
+            </div>
+            
+            <h3 onclick="toggleCollapse('supply-intercept-content')">Правила перехвата поставок</h3>
+            <div class="collapsible-content" id="supply-intercept-content">
+                <div class="rule-content">
+                    <!-- Вставьте свой текст здесь -->
+                    <p><a href="#">https://forum.majestic-rp.ru/threads/pravila-perekhvata-postavok.123972/</a></p>
+                    <p>1. Поставка - любое передвижение матовозки, в т.ч. транспортировка / разгрузка / загрузка материалов / созданных предметов из данных материалов, а так же закупаемых предметов, с целью их дальнейшей реализации, переработки и/или продажи.</p>
+
+                    <p>
+2. Минимальное количество участников со стороны гос. фракций - 8 человек. | Demorgan 45 минут / Устный выговор лидерам.
+Примечание: включая SANG.</p>
+                    <p>3. 1.2. Максимальное количество участников со стороны гос. фракций - 40 человек. | Demorgan 45 минут / Устный выговор лидерам.
+Примечание: включая SANG.
+Исключение: окончательное кол-во участников со стороны государственных структур определяется ГА сервера.</p>
+                    <p>4. 3. Запрещено вызывать подкрепление во время нападения на поставку. | Demorgan 60 минут / Устный выговор лидерам. </p>
+                    <p>Исключение: повторное нападение на поставку.</p>
+                    <p>Примечание: вмешательство третьей стороны в ходе одной перестрелки считается повторным нападением. </p>
+                </div>
+            </div>
+
+                       <h3 onclick="toggleCollapse('interopll')">Правила захвата цехов / дилеров </h3>
+            <div class="collapsible-content" id="interopll">
+                <div class="rule-content">
+                    <!-- Вставьте свой текст здесь -->
+                    <p><a href="#">https://forum.majestic-rp.ru/threads/pravila-zakhvata-tsekhov-dilerov.1823529/</a></p>
+                    <p>2. На мероприятиях действуют все правила сервера.
+Исключение: DM (разрешено убийство лишь причастных к мероприятию), PG, nonRP drive для матовозки, NLR.</p>
+                    <p>3. Запрещено DB. | Ban 3-10 дней / HardBan 7-30 дней.</p>
+                    <p>5. На территории мероприятия запрещена высадка на любые здания, строения, объекты на летной техники. | Demorgan 100 минут.
+Исключение: конец мероприятия. </p>
+                    <p>4. Запрещено использование анимаций. | Demorgan 35-90 минут / WARN.
+Исключение: функциональное использование "ползать", "присесть".</p>
+                    <p>
+
+                    </p>
+                </div>
+            </div>
+            
+        </section>
+        
+        <section id="faq" class="animate__animated animate__fadeIn animate__delay-3s">
+            <h2>Частые вопросы</h2>
+            
+            <h3>Как повышаться?</h3>
+            <div class="faq-item">
+                <p>В Discord сервере есть канал #система-повышений, где подробно описаны все требования для каждого звания. Основные критерии: активность, знание законов, участие в операциях и рекомендации от вышестоящих сотрудников.</p>
+            </div>
+            
+    
+        </section>
+    </div>
+    
+    <footer class="animate__animated animate__fadeIn animate__delay-4s">
+        <p>Site done By Connor Majestic a.k Roi For | Majestic RP Phoenix</p>
+        <p>Контакты: Discord: colepatkins | Форум: majestic-rp.com |</p>
+        <p>Все права защищены. Несанкционированное копирование материалов запрещено.</p>
+    </footer>
+    
+    <script>
+        
+        function toggleCollapse(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+            
+            content.classList.toggle('active');
+            header.classList.toggle('active');
+        }
+        
+    
+        function moveLights() {
+            const lights = document.querySelectorAll('.light');
+            
+            lights.forEach((light, index) => {
+                
+                let x = parseInt(light.style.left) || 
+                         (index % 2 === 0 ? 10 : 70);
+                let y = parseInt(light.style.top) || 
+                        (index < 2 ? 20 : 60);
+                
+           
+                let xDir = Math.random() > 0.5 ? 1 : -1;
+                let yDir = Math.random() > 0.5 ? 1 : -1;
+                
+                
+                const speed = 0.1 + Math.random() * 0.2;
+                
+                function animate() {
+                    x += xDir * speed;
+                    y += yDir * speed;
+                    
+                    // Отскок от границ
+                    if (x < 0 || x > 90) xDir *= -1;
+                    if (y < 0 || y > 90) yDir *= -1;
+                    
+                    light.style.left = `${x}%`;
+                    light.style.top = `${y}%`;
+                    
+                    requestAnimationFrame(animate);
+                }
+                
+                animate();
+            });
+        }
+    
+        window.addEventListener('load', moveLights);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
+</body>
+</html>
