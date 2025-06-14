@@ -598,6 +598,53 @@
             break-inside: avoid;
             margin-bottom: 0.5rem;
         }
+
+        .useful-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .link-card {
+            background: rgba(45, 45, 45, 0.6);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(45, 45, 45, 0.8);
+        }
+        
+        .link-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .link-card p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        
+        .link-card a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(74, 144, 226, 0.2);
+            border-radius: 4px;
+            color: var(--primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .link-card a:hover {
+            background: rgba(74, 144, 226, 0.4);
+            color: var(--text-light);
+        }
  
         footer {
             background: linear-gradient(180deg, transparent, rgba(26, 26, 26, 0.9));
@@ -713,6 +760,10 @@
                 transform: rotate(90deg);
                 margin: 20px 0;
             }
+
+            .useful-links {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -734,6 +785,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#legislation">Законодательная база</a></li>
             <li><a href="#rules">Основные правила</a></li>
+            <li><a href="#useful-links">Полезные ссылки</a></li>
             <li><a href="#faq">Частые вопросы</a></li>
         </ul>
     </nav>
@@ -947,7 +999,6 @@
                             <li>ё) Освидетельствование;</li>
                             <li>ж) Проверка показаний;</li>
                             <li>з) Производство судебной экспертизы;</li>
-                            <li>и) Контроль и запись переговоров;</li>
                             <li>й) Следственный эксперимент;</li>
                             <li>к) Возбуждение дела (принятие заявления или фиксация нарушения);</li>
                             <li>л) Оперативно-розыскные мероприятия;</li>
@@ -970,38 +1021,6 @@
         </div>
     </div>
 
-    <style>
-        .composition-section {
-            margin-top: 30px;
-        }
-        
-        .composition-block.full-width {
-            max-width: 100%;
-            width: 100%;
-        }
-        
-        .investigation-list-container {
-            margin-top: 15px;
-        }
-        
-        .investigation-list {
-            columns: 2;
-            column-gap: 2rem;
-            margin: 1rem 0;
-        }
-        
-        .investigation-list li {
-            break-inside: avoid;
-            margin-bottom: 0.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            .investigation-list {
-                columns: 1;
-            }
-        }
-    </style>
-
         </section>
         
         <section id="rules" class="animate__animated animate__fadeIn animate__delay-2s">
@@ -1014,7 +1033,7 @@
                     <p>1. Запрещено DB. | Ban 3-10 дней / HardBan 7-30 дней.</p>
                     <p>2. На территории ВЗА запрещено вождение любого транспорта. | Demorgan 30-60 минут.</p>
                     <p>3. Участники, которые находятся вне зоны ВЗА, обязаны стремиться попасть к AirDrop'у, не задерживаясь на нейтральной территории. | Demorgan 45-90 минут.</p>
-                    <p>4. Запрещено использование heavy sniper, heavy sniper mk2 , Marksman Rifle MK2, тазера, наручников, стяжек, веревок и дронов, ношение тепловизоров. | Demorgan 90 минут / Ban / HardBan 3-5 дней + изъятие предмета.</p>
+                    <p>4. Запрещено использование heavy sniper, heavy sniper mk2 , тазера, наручников, стяжек, веревок и дронов, ношение тепловизоров. | Demorgan 90 минут / Ban / HardBan 3-5 дней + изъятие предмета.</p>
                     <p>5. Запрещено покидать игру во время ВЗА. | WARN / HardBan 2-4 дня.</p>
                     <p>6. Запрещено использование анимаций. | Demorgan 35-90 минут / WARN.
 Исключение: функциональное использование "ползать", "присесть"..</p>
@@ -1058,15 +1077,49 @@
 Исключение: конец мероприятия. </p>
                     <p>4. Запрещено использование анимаций. | Demorgan 35-90 минут / WARN.
 Исключение: функциональное использование "ползать", "присесть".</p>
-                    <p>
-
-                    </p>
                 </div>
             </div>
             
         </section>
+
+        <section id="useful-links" class="animate__animated animate__fadeIn animate__delay-3s">
+            <h2>Полезные ссылки</h2>
+            
+            <div class="useful-links">
+                <div class="link-card">
+                    <h4>Официальный форум</h4>
+                    <p>Форум проекта Majestic RP с актуальными новостями, обсуждениями и правилами</p>
+                    <a href="https://forum.majestic-rp.ru/" target="_blank">Перейти</a>
+                </div>
+                
+                <div class="link-card">
+                    <h4>Discord сервер FIB Перевод.</h4>
+                    <p>Официальный Discord сервер фракции FIB дла перевода в другие фракции.</p>
+                    <a href="https://discord.com/channels/1382607727507017739/1382607728702394374" target="_blank">Заполнить</a>
+                </div>
+                
+                <div class="link-card">
+                    <h4>Discord сервер FIB Рапорт на Увал.</h4>
+                    <p>Официальный Discord сервер фракции FIB для того чтобы написать Рапорт на Увал.</p>
+                    <a href="https://discord.com/channels/1382607727507017739/1382607728702394375" target="_blank">Заполнить</a>
+                </div>
+                
+                <div class="link-card">
+                    <h4>Discord сервер FIB Запрос спецухи.</h4>
+                    <p>Запос дефиков/дронов в FIB</p>
+                    <a href="https://discord.com/channels/1382607727507017739/1382607729142530110" target="_blank">Подробнее</a>
+                </div>
+                
+                <div class="link-card">
+                    <h4>Запрос на Отпуск</h4>
+                    <p>Запрос на афк</p>
+                    <a href="https://discord.com/channels/1382607727507017739/1383499354806947940" target="_blank">Заполнить</a>
+                </div>
+                
+            </div>
+        </section>
         
-        <section id="faq" class="animate__animated animate__fadeIn animate__delay-3s">
+        <section id="faq" class="animate__animated animate__fadeIn animate__delay-4s">
             <h2>Частые вопросы</h2>
             
             <h3>Как повышаться?</h3>
@@ -1091,12 +1144,19 @@
                 <p>Нужно знать правило ПОЙП и парило терактов вот ссылка <a href="https://forum.majestic-rp.ru/threads/pravila-ograblenii-i-pokhishchenii.8254/">Тык*</a> (Если кто-то ещё не понял — заявку тоже обязательно нужно оставить.)</p>
                 <p>Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                           
             </div>
+
+            
+            <h3>Будут ли Баллы?</h3>
+             <div class="faq-item">
+                <p>Да после каждого приема будут выписаны баллы и их количество зависит токло от вас.</p>
+                <p>Не нужно писать в личные сообщения хайранам с просьбой рассмотреть вашу заявку или дать баллы.</p>                           
+            </div>
         
         </section>
         
     </div>
     
-    <footer class="animate__animated animate__fadeIn animate__delay-4s">
+    <footer class="animate__animated animate__fadeIn animate__delay-5s">
         <p>Site done By Connor Majestic a.k Roi For | Majestic RP Phoenix/FIB</p>
         <p>Контакты: Discord: colepatkins |</p>
         <p>Все права защищены. Несанкционированное копирование материалов запрещено.</p>
