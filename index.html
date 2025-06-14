@@ -573,6 +573,31 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        
+        .intent-section {
+            background: rgba(45, 45, 45, 0.6);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .intent-type {
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .investigation-list {
+            columns: 2;
+            column-gap: 2rem;
+            margin: 1rem 0;
+        }
+        
+        .investigation-list li {
+            break-inside: avoid;
+            margin-bottom: 0.5rem;
+        }
  
         footer {
             background: linear-gradient(180deg, transparent, rgba(26, 26, 26, 0.9));
@@ -659,6 +684,10 @@
             
             section {
                 padding: 1.5rem;
+            }
+            
+            .investigation-list {
+                columns: 1;
             }
         }
         
@@ -783,90 +812,200 @@
                 </div>
             </div>
             
-            <div class="code-section">
-                <h4>Анти-Адвокат</h4>
-                <p>Против Адвокатов.</p>
+                <div class="code-section">
+        <h4>Анти-Адвокат</h4>
+        <p>Против Адвокатов.</p>
+        
+        <div class="article-item animate__animated animate__zoomIn">
+            <h3 class="anti-lawyer-title">Состав преступления против адвокатов</h3>
+            
+            <!-- Блоки Объективные и Субъективные признаки в один ряд -->
+            <div class="crime-composition">
+                <div class="composition-block">
+                    <div class="block-title">Объективные признаки</div>
+                    
+                    <div class="sub-block">
+                        <div class="sub-block-title">Объект</div>
+                        <div class="item">Общественные отношения</div>
+                        <div class="item">Социальные ценности</div>
+                        <div class="item required">Охраняемые законом интересы</div>
+                    </div>
+                    
+                    <div class="section-connector"></div>
+                    
+                    <div class="sub-block">
+                        <div class="sub-block-title">Объективная сторона</div>
+                        <div class="item required">Деяние (действие/бездействие)</div>
+                        <div class="item">Общественно опасные последствия</div>
+                        <div class="item">Причинная связь</div>
+                        <div class="item">Время, место, способ</div>
+                        <div class="item">Орудия и средства</div>
+                    </div>
+                </div>
                 
-                <div class="article-item animate__animated animate__zoomIn">
-                    <h3 class="anti-lawyer-title">Состав преступления против адвокатов</h3>
+                <div class="plus-sign">+</div>
+                
+                <div class="composition-block">
+                    <div class="block-title">Субъективные признаки</div>
                     
-                    <div class="crime-composition">
-                        <div class="composition-block">
-                            <div class="block-title">Объективные признаки</div>
-                            
-                            <div class="sub-block">
-                                <div class="sub-block-title">Объект</div>
-                                <div class="item">Общественные отношения</div>
-                                <div class="item">Социальные ценности</div>
-                                <div class="item required">Охраняемые законом интересы</div>
-                            </div>
-                            
-                            <div class="section-connector"></div>
-                            
-                            <div class="sub-block">
-                                <div class="sub-block-title">Объективная сторона</div>
-                                <div class="item required">Деяние (действие/бездействие)</div>
-                                <div class="item">Общественно опасные последствия</div>
-                                <div class="item">Причинная связь</div>
-                                <div class="item">Время, место, способ</div>
-                                <div class="item">Орудия и средства</div>
-                            </div>
-                        </div>
-                        
-                        <div class="plus-sign">+</div>
-                        
-                        <div class="composition-block">
-                            <div class="block-title">Субъективные признаки</div>
-                            
-                            <div class="sub-block">
-                                <div class="sub-block-title">Субъект</div>
-                                <div class="item required">Физическое лицо</div>
-                                <div class="item required">Возраст</div>
-                                <div class="item required">Вменяемость</div>
-                                <div class="item">Специальный субъект</div>
-                            </div>
-                            
-                            <div class="section-connector"></div>
-                            
-                            <div class="sub-block">
-                                <div class="sub-block-title">Субъективная сторона</div>
-                                <div class="item required">Вина (умысел/неосторожность)</div>
-                                <div class="item">Мотив (корысть, месть)</div>
-                                <div class="item">Цель (воспрепятствование правосудию)</div>
-                                <div class="item">Эмоциональное состояние</div>
-                            </div>
-                        </div>
+                    <div class="sub-block">
+                        <div class="sub-block-title">Субъект</div>
+                        <div class="item required">Физическое лицо</div>
+                        <div class="item required">Возраст</div>
+                        <div class="item required">Вменяемость</div>
+                        <div class="item">Специальный субъект</div>
                     </div>
                     
-                    <div class="explanation">
-                        <p><strong>Объективные признаки</strong> - внешняя характеристика преступления, то, что можно наблюдать и фиксировать:</p>
-                        <ul>
-                            <li><strong>Объект</strong> - то, на что направлено преступное посягательство (охраняемые законом интересы правосудия).</li>
-                            <li><strong>Объективная сторона</strong> - внешнее проявление преступления, включая деяние (обязательный признак), последствия и связь между ними.</li>
-                        </ul>
-                        
-                        <p><strong>Субъективные признаки</strong> - внутренняя характеристика преступления, связанная с лицом, его совершившим:</p>
-                        <ul>
-                            <li><strong>Субъект</strong> - лицо, совершившее преступление (обязательные признаки - возраст и вменяемость).</li>
-                            <li><strong>Субъективная сторона</strong> - психическое отношение лица к содеянному (обязательный признак - вина).</li>
-                        </ul>
-                        
-                        <p>Красным цветом выделены <strong>обязательные признаки</strong> состава преступления. Без любого из них состав преступления отсутствует.</p>
-                        <p><strong>Примечание:</strong> Для преступлений против правосудия (в т.ч. действий адвокатов) часто требуется специальный субъект - лицо, использующее свои профессиональные полномочия.</p>
-                    </div>
+                    <div class="section-connector"></div>
                     
-                    <h2>Нужно знать (проц.кодекс): <a href="https://forum.majestic-rp.ru/threads/protsessual-nyi-kodeks-shtata-san-andreas.2247406/">Тык*</a></h2>
-                    <p>
-                        Статья 17. Порядок задержания правомочным лицом.​
-                    </p>
-                    <p>
-                        Статья 18. Субъекты задержания
-                    </p>
-                    <p>
-                        Статья 22. Права задерживаемого
-                    </p>
+                    <div class="sub-block">
+                        <div class="sub-block-title">Субъективная сторона</div>
+                        <div class="item required">Вина (умысел/неосторожность)</div>
+                        <div class="item">Мотив (корысть, месть)</div>
+                        <div class="item">Цель (воспрепятствование правосудию)</div>
+                        <div class="item">Эмоциональное состояние</div>
+                    </div>
                 </div>
             </div>
+            
+            <!-- Пояснение после блоков -->
+            <div class="explanation">
+                <p><strong>Объективные признаки</strong> - внешняя характеристика преступления, то, что можно наблюдать и фиксировать:</p>
+                <ul>
+                    <li><strong>Объект</strong> - то, на что направлено преступное посягательство (охраняемые законом интересы правосудия).</li>
+                    <li><strong>Объективная сторона</strong> - внешнее проявление преступления, включая деяние (обязательный признак), последствия и связь между ними.</li>
+                </ul>
+                
+                <p><strong>Субъективные признаки</strong> - внутренняя характеристика преступления, связанная с лицом, его совершившим:</p>
+                <ul>
+                    <li><strong>Субъект</strong> - лицо, совершившее преступление (обязательные признаки - возраст и вменяемость).</li>
+                    <li><strong>Субъективная сторона</strong> - психическое отношение лица к содеянному (обязательный признак - вина).</li>
+                </ul>
+                
+                <p>Красным цветом выделены <strong>обязательные признаки</strong> состава преступления. Без любого из них состав преступления отсутствует.</p>
+                <p><strong>Примечание:</strong> Для преступлений против правосудия (в т.ч. действий адвокатов) часто требуется специальный субъект - лицо, использующее свои профессиональные полномочия.</p>
+            </div>
+            
+            <!-- Добавленные разделы в таком же оформлении -->
+            <div class="composition-section">
+                <h3>Формы вины</h3>
+                
+                <div class="crime-composition">
+                    <div class="composition-block">
+                        <div class="block-title">1. Умысел</div>
+                        
+                        <div class="sub-block">
+                            <div class="sub-block-title">Прямой умысел:</div>
+                            <div class="item">Осознавал противоправность деяния</div>
+                            <div class="item">Предвидел наступление общественно вредных последствий</div>
+                            <div class="item">Желал наступления этих последствий</div>
+                        </div>
+                        
+                        <div class="section-connector"></div>
+                        
+                        <div class="sub-block">
+                            <div class="sub-block-title">Косвенный умысел:</div>
+                            <div class="item">Осознавал противоправность деяния</div>
+                            <div class="item">Предвидел наступление общественно вредных последствий</div>
+                            <div class="item">Не желал, но сознательно допускал наступление этих последствий</div>
+                        </div>
+                    </div>
+                    
+                    <div class="plus-sign">+</div>
+                    
+                    <div class="composition-block">
+                        <div class="block-title">2. Неосторожность</div>
+                        
+                        <div class="sub-block">
+                            <div class="sub-block-title">Легкомыслие:</div>
+                            <div class="item">Осознавал противоправность деяния</div>
+                            <div class="item">Предвидел наступление общественно опасного вреда</div>
+                            <div class="item">Легкомысленно рассчитывал на предотвращение последствий</div>
+                        </div>
+                        
+                        <div class="section-connector"></div>
+                        
+                        <div class="sub-block">
+                            <div class="sub-block-title">Небрежность:</div>
+                            <div class="item">Не осознавал противоправности деяния</div>
+                            <div class="item">Не предвидел наступления общественно опасного вреда</div>
+                            <div class="item">Но мог и должен был предвидеть</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Перечень следственных действий -->
+            <div class="composition-section">
+                <div class="composition-block full-width">
+                    <div class="block-title">Перечень следственных действий</div>
+                    
+                    <div class="investigation-list-container">
+                        <ul class="investigation-list">
+                            <li>а) Допрос;</li>
+                            <li>б) Осмотр;</li>
+                            <li>в) Обыск;</li>
+                            <li>г) Выемка;</li>
+                            <li>д) Очная ставка;</li>
+                            <li>е) Опознание;</li>
+                            <li>ё) Освидетельствование;</li>
+                            <li>ж) Проверка показаний;</li>
+                            <li>з) Производство судебной экспертизы;</li>
+                            <li>и) Контроль и запись переговоров;</li>
+                            <li>й) Следственный эксперимент;</li>
+                            <li>к) Возбуждение дела (принятие заявления или фиксация нарушения);</li>
+                            <li>л) Оперативно-розыскные мероприятия;</li>
+                            <li>м) Задержание.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Нужно знать (проц.кодекс): <a href="https://forum.majestic-rp.ru/threads/protsessual-nyi-kodeks-shtata-san-andreas.2247406/">Тык*</a></h2>
+            <p>
+                Статья 17. Порядок задержания правомочным лицом.​
+            </p>
+            <p>
+                Статья 18. Субъекты задержания
+            </p>
+            <p>
+                Статья 22. Права задерживаемого
+            </p>
+        </div>
+    </div>
+
+    <style>
+        .composition-section {
+            margin-top: 30px;
+        }
+        
+        .composition-block.full-width {
+            max-width: 100%;
+            width: 100%;
+        }
+        
+        .investigation-list-container {
+            margin-top: 15px;
+        }
+        
+        .investigation-list {
+            columns: 2;
+            column-gap: 2rem;
+            margin: 1rem 0;
+        }
+        
+        .investigation-list li {
+            break-inside: avoid;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .investigation-list {
+                columns: 1;
+            }
+        }
+    </style>
+
         </section>
         
         <section id="rules" class="animate__animated animate__fadeIn animate__delay-2s">
