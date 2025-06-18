@@ -226,11 +226,50 @@
             border-radius: 4px;
             transition: all var(--transition-speed) ease;
             border: 1px solid var(--border);
+            position: relative;
+            padding-right: 2.5rem;
         }
         
         h3:hover {
             background-color: var(--light-gray);
             transform: translateX(10px);
+        }
+
+        h3::after {
+            content: '+';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        h3.active::after {
+            content: '-';
+            transform: translateY(-50%);
+        }
+
+        /* New styles for important buttons */
+        h3.important-button {
+            background-color: var(--light-gray);
+            border: 2px solid var(--accent);
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 1rem;
+            box-shadow: 0 4px 8px var(--shadow);
+            margin: 2rem 0;
+        }
+
+        h3.important-button:hover {
+            background-color: var(--accent);
+            color: var(--black);
+            transform: translateX(10px) scale(1.02);
+        }
+
+        h3.important-button::after {
+            font-size: 1.8rem;
+            right: 1.5rem;
         }
         
         p {
@@ -271,6 +310,8 @@
             overflow: hidden;
             padding: 0 1.25rem;
             transition: all 0.5s ease;
+            opacity: 0;
+            visibility: hidden;
         }
         
         .collapsible-content.active {
@@ -279,6 +320,8 @@
             background: var(--gray);
             border-radius: 0 0 4px 4px;
             animation: expand 0.5s ease;
+            opacity: 1;
+            visibility: visible;
         }
         
         @keyframes expand {
@@ -330,6 +373,8 @@
             padding: 1rem;
             width: 100%;
             max-width: 450px;
+            flex: 1;
+            min-width: 300px;
         }
         
         .block-title {
@@ -562,6 +607,15 @@
             
             .investigation-list {
                 columns: 1;
+            }
+            
+            .crime-composition {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .composition-block {
+                max-width: 100%;
             }
         }
         
@@ -890,29 +944,31 @@
                 <div class="article-item">
                     <h4>Ссылка на дорожный кодекс</h4>
                     <p><a href="https://forum.majestic-rp.ru/threads/dorozhnyi-kodeks-shtata-san-andreas.2247397/">Тык*</a></p>
-                    <h3>Частые статьи:</h3>
-                    <p>Статья 1. (R) Водитель должен предъявить и передать по первому требованию сотрудника правоохранительных органов свою лицензию на управление транспортным средством с соответствующей категорией, а также документ удостоверяющий личность.​
+                    <h3 onclick="toggleCollapse('common-articles-content')" class="important-button">Частые статьи:</h3>
+                    <div class="collapsible-content" id="common-articles-content">
+                        <p>Статья 1. (R) Водитель должен предъявить и передать по первому требованию сотрудника правоохранительных органов свою лицензию на управление транспортным средством с соответствующей категорией, а также документ удостоверяющий личность.​
 Наказание: штраф до $5.000.​</p>
-                    <p>
-                        Статья 2.(R) Водитель обязан остановиться по требованию сотрудника правоохранительных органов и покинуть транспортное средство.​
+                        <p>
+                            Статья 2.(R) Водитель обязан остановиться по требованию сотрудника правоохранительных органов и покинуть транспортное средство.​
 Наказание: штраф до $5.000.​
-                    </p>
-                    <p>
-                    Статья 4.(R) При аварии, водитель обязан остановиться и не трогаться с места. Также водитель не должен трогать и перемещать предметы связанные с происшествием​
+                        </p>
+                        <p>
+                        Статья 4.(R) При аварии, водитель обязан остановиться и не трогаться с места. Также водитель не должен трогать и перемещать предметы связанные с происшествием​
 Наказание: штраф до $10.000.​
-                    </p>
-                    <p>
-                    Статья 37.(R) Остановка запрещается:
-                    </p>
-                    <p>а) параллельно красному бордюру;​
+                        </p>
+                        <p>
+                        Статья 37.(R) Остановка запрещается:
+                        </p>
+                        <p>а) параллельно красному бордюру;​
 Исключение: Водители автобусов во время остановок.​</p>
-                    <p>б) на пешеходных переходах и тротуаре;​</p>
-                    <p>в) на ж/д переездах, трамвайных путях, мостах, в тоннелях;​</p>
-                    <p>г) на крутых и опасных поворотах;​</p>
-                    <p>д) на перекрестках;​</p>
-                    <p>е) на служебных стоянках государственных учреждений.​</p>
-                    <p>Исключение: Сотрудник государственной структуры на автомобиле с государственными номерами. К данным парковкам относятся парковки при государственных учреждений общего доступа (Передняя парковка LSPD, Передняя парковка Капитолия и т.д)​</p>
-                    <p>Наказание: штраф до $5.000 и эвакуация транспортного средства на штрафстоянку.​</p>
+                        <p>б) на пешеходных переходах и тротуаре;​</p>
+                        <p>в) на ж/д переездах, трамвайных путях, мостах, в тоннелях;​</p>
+                        <p>г) на крутых и опасных поворотах;​</p>
+                        <p>д) на перекрестках;​</p>
+                        <p>е) на служебных стоянках государственных учреждений.​</p>
+                        <p>Исключение: Сотрудник государственной структуры на автомобиле с государственными номерами. К данным парковкам относятся парковки при государственных учреждений общего доступа (Передняя парковка LSPD, Передняя парковка Капитолия и т.д)​</p>
+                        <p>Наказание: штраф до $5.000 и эвакуация транспортного средства на штрафстоянку.​</p>
+                    </div>
                 </div>
             </div>
             
@@ -924,16 +980,18 @@
                     <h4>Ссылка на процессуальный кодекс</h4>
                     <p><a href="https://forum.majestic-rp.ru/threads/protsessual-nyi-kodeks-shtata-san-andreas.2190752/">Тык*</a></p>
                     
-                    <h3>Нужно знать:</h3>
-                    <p>
-                        Статья 17. Порядок задержания правомочным лицом.​
-                    </p>
-                    <p>
-                        Статья 18. Субъекты задержания
-                    </p>
-                    <p>
-                        Статья 22. Права задерживаемого
-                    </p>
+                    <h3 onclick="toggleCollapse('procedural-knowledge-content')" class="important-button">Нужно знать:</h3>
+                    <div class="collapsible-content" id="procedural-knowledge-content">
+                        <p>
+                            Статья 17. Порядок задержания правомочным лицом.​
+                        </p>
+                        <p>
+                            Статья 18. Субъекты задержания
+                        </p>
+                        <p>
+                            Статья 22. Права задерживаемого
+                        </p>
+                    </div>
                 </div>
             </div>
             
@@ -941,9 +999,8 @@
                 <h4>Анти-Адвокат</h4>
                 <p>Против Адвокатов.</p>
                 
-                <div class="article-item">
-                    <h3>Состав преступления против адвокатов</h3>
-                    
+                <h3 onclick="toggleCollapse('lawyer-crime-content')" class="important-button">Состав преступления против адвокатов</h3>
+                <div class="collapsible-content" id="lawyer-crime-content">
                     <div class="crime-composition">
                         <div class="composition-block">
                             <div class="block-title">Объективные признаки</div>
@@ -1009,88 +1066,54 @@
                         <p><strong>Примечание:</strong> Для преступлений против правосудия (в т.ч. действий адвокатов) часто требуется специальный субъект - лицо, использующее свои профессиональные полномочия.</p>
                     </div>
                     
-                    <div class="composition-section">
-                        <h3>Формы вины</h3>
-                        
-                        <div class="crime-composition">
-                            <div class="composition-block">
-                                <div class="block-title">1. Умысел</div>
-                                
-                                <div class="sub-block">
-                                    <div class="sub-block-title">Прямой умысел:</div>
-                                    <div class="item">Осознавал противоправность деяния</div>
-                                    <div class="item">Предвидел наступление общественно вредных последствий</div>
-                                    <div class="item">Желал наступления этих последствий</div>
+                    <h3 onclick="toggleCollapse('guilt-forms-content')" class="important-button">Формы вины</h3>
+                    <div class="collapsible-content" id="guilt-forms-content">
+                        <div class="composition-section">
+                            <div class="crime-composition">
+                                <div class="composition-block">
+                                    <div class="block-title">1. Умысел</div>
+                                    
+                                    <div class="sub-block">
+                                        <div class="sub-block-title">Прямой умысел:</div>
+                                        <div class="item">Осознавал противоправность деяния</div>
+                                        <div class="item">Предвидел наступление общественно вредных последствий</div>
+                                        <div class="item">Желал наступления этих последствий</div>
+                                    </div>
+                                    
+                                    <div class="section-connector"></div>
+                                    
+                                    <div class="sub-block">
+                                        <div class="sub-block-title">Косвенный умысел:</div>
+                                        <div class="item">Осознавал противоправность деяния</div>
+                                        <div class="item">Предвидел наступление общественно вредных последствий</div>
+                                        <div class="item">Не желал, но сознательно допускал наступление этих последствий</div>
+                                    </div>
                                 </div>
                                 
-                                <div class="section-connector"></div>
+                                <div class="plus-sign">+</div>
                                 
-                                <div class="sub-block">
-                                    <div class="sub-block-title">Косвенный умысел:</div>
-                                    <div class="item">Осознавал противоправность деяния</div>
-                                    <div class="item">Предвидел наступление общественно вредных последствий</div>
-                                    <div class="item">Не желал, но сознательно допускал наступление этих последствий</div>
+                                <div class="composition-block">
+                                    <div class="block-title">2. Неосторожность</div>
+                                    
+                                    <div class="sub-block">
+                                        <div class="sub-block-title">Легкомыслие:</div>
+                                        <div class="item">Осознавал противоправность деяния</div>
+                                        <div class="item">Предвидел наступление общественно опасного вреда</div>
+                                        <div class="item">Легкомысленно рассчитывал на предотвращение последствий</div>
+                                    </div>
+                                    
+                                    <div class="section-connector"></div>
+                                    
+                                    <div class="sub-block">
+                                        <div class="sub-block-title">Небрежность:</div>
+                                        <div class="item">Не осознавал противоправности деяния</div>
+                                        <div class="item">Не предвидел наступления общественно опасного вреда</div>
+                                        <div class="item">Но мог и должен был предвидеть</div>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="plus-sign">+</div>
-                            
-                            <div class="composition-block">
-                                <div class="block-title">2. Неосторожность</div>
-                                
-                                <div class="sub-block">
-                                    <div class="sub-block-title">Легкомыслие:</div>
-                                    <div class="item">Осознавал противоправность деяния</div>
-                                    <div class="item">Предвидел наступление общественно опасного вреда</div>
-                                    <div class="item">Легкомысленно рассчитывал на предотвращение последствий</div>
-                                </div>
-                                
-                                <div class="section-connector"></div>
-                                
-                                <div class="sub-block">
-                                    <div class="sub-block-title">Небрежность:</div>
-                                    <div class="item">Не осознавал противоправности деяния</div>
-                                    <div class="item">Не предвидел наступления общественно опасного вреда</div>
-                                    <div class="item">Но мог и должен был предвидеть</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="composition-section">
-                        <div class="composition-block full-width">
-                            <div class="block-title">Перечень следственных действий</div>
-                            
-                            <div class="investigation-list-container">
-                                <ul class="investigation-list">
-                                    <li>а) Допрос;</li>
-                                    <li>б) Осмотр;</li>
-                                    <li>в) Обыск;</li>
-                                    <li>г) Выемка;</li>
-                                    <li>д) Очная ставка;</li>
-                                    <li>е) Опознание;</li>
-                                    <li>ё) Освидетельствование;</li>
-                                    <li>ж) Проверка показаний;</li>
-                                    <li>з) Производство судебной экспертизы;</li>
-                                    <li>й) Следственный эксперимент;</li>
-                                    <li>к) Возбуждение дела (принятие заявления или фиксация нарушения);</li>
-                                    <li>л) Оперативно-розыскные мероприятия;</li>
-                                    <li>м) Задержание.</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
-                    
-                    <h3>Нужно знать (проц.кодекс): <a href="https://forum.majestic-rp.ru/threads/protsessual-nyi-kodeks-shtata-san-andreas.2247406/">Тык*</a></h3>
-                    <p>
-                        Статья 17. Порядок задержания правомочным лицом.​
-                    </p>
-                    <p>
-                        Статья 18. Субъекты задержания
-                    </p>
-                    <p>
-                        Статья 22. Права задерживаемого
-                    </p>
                 </div>
             </div>
         </section>
@@ -1100,10 +1123,11 @@
             <h2>Уголовный кодекс</h2>
             
             <div class="uk-section">
-                <h3>Интерактивная таблица Уголовного кодекса</h3>
-                <p>Для удобного просмотра таблицы используйте кнопку "Полноэкранный режим" ниже.</p>
-                
-                <button class="uk-fullscreen-btn" id="fullscreen-btn">Полноэкранный режим</button>
+                <h3 onclick="toggleCollapse('uk-table-content')">Интерактивная таблица Уголовного кодекса</h3>
+                <div class="collapsible-content" id="uk-table-content">
+                    <p>Для удобного просмотра таблицы используйте кнопку "Полноэкранный режим" ниже.</p>
+                    <button class="uk-fullscreen-btn" id="fullscreen-btn">Полноэкранный режим</button>
+                </div>
             </div>
         </section>
         <section id="protected-territories">
@@ -1300,51 +1324,65 @@
         <section id="faq">
             <h2>Частые вопросы</h2>
             
-            <h3>Как повышаться?</h3>
-            <div class="faq-item">
-                <p>В Discord сервере есть канал #система-повышений, где подробно описаны все требования для каждого звания.</p>
-                <p>Для повышения нужно набрать количество баллов и закинуть отчет в канал #отчет-на-повышение.</p>
-                <a href="https://imgur.com/a/Rq9I2YH">Ссылка на гайд</a>
+            <h3 onclick="toggleCollapse('promotion-content')">Как повышаться?</h3>
+            <div class="collapsible-content" id="promotion-content">
+                <div class="faq-item">
+                    <p>В Discord сервере есть канал #система-повышений, где подробно описаны все требования для каждого звания.</p>
+                    <p>Для повышения нужно набрать количество баллов и закинуть отчет в канал #отчет-на-повышение.</p>
+                    <a href="https://imgur.com/a/Rq9I2YH">Ссылка на гайд</a>
+                </div>
             </div>
 
-            <h3>Что делать если отклонили отчет?</h3>
-             <div class="faq-item">
-                <p>1. Имя/Фамилия/Статик либо не указан, либо указан неверно.</p>
-                <p>2. Если вы повышаетесь за баллы из канала #благодарность, вы должны предоставить подтверждение того, что действительно были на мероприятии.</p>                   
+            <h3 onclick="toggleCollapse('report-rejected-content')">Что делать если отклонили отчет?</h3>
+            <div class="collapsible-content" id="report-rejected-content">
+                <div class="faq-item">
+                    <p>1. Имя/Фамилия/Статик либо не указан, либо указан неверно.</p>
+                    <p>2. Если вы повышаетесь за баллы из канала #благодарность, вы должны предоставить подтверждение того, что действительно были на мероприятии.</p>                   
+                </div>
             </div>
 
-            <h3>Как попасть в отдел CID?</h3>
-            <div class="faq-item">
-                <p>Заявки в отдел CID работают, но приходят в другой Discord для секретности.</p>
-                <p>Примечание: Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                
+            <h3 onclick="toggleCollapse('cid-content')">Как попасть в отдел CID?</h3>
+            <div class="collapsible-content" id="cid-content">
+                <div class="faq-item">
+                    <p>Заявки в отдел CID работают, но приходят в другой Discord для секретности.</p>
+                    <p>Примечание: Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                
+                </div>
             </div>
 
-            <h3>Как попасть в отдел FA?</h3>
-             <div class="faq-item">
-                <p>Нужно знать правила ПОЙП и правила терактов, вот ссылка <a href="https://forum.majestic-rp.ru/threads/pravila-ograblenii-i-pokhishchenii.8254/">Тык*</a> (Если кто-то ещё не понял — заявку тоже обязательно нужно оставить.)</p>
-                <p>Примечание: Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                           
+            <h3 onclick="toggleCollapse('fa-content')">Как попасть в отдел FA?</h3>
+            <div class="collapsible-content" id="fa-content">
+                <div class="faq-item">
+                    <p>Нужно знать правила ПОЙП и правила терактов, вот ссылка <a href="https://forum.majestic-rp.ru/threads/pravila-ograblenii-i-pokhishchenii.8254/">Тык*</a> (Если кто-то ещё не понял — заявку тоже обязательно нужно оставить.)</p>
+                    <p>Примечание: Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                           
+                </div>
             </div>
 
-            <h3>Будут ли Баллы?</h3>
-             <div class="faq-item">
-                <p>Да, после каждого сбора будут выписаны баллы, и их количество зависит только от вас.</p>
-                <p>Примечание: Не нужно писать в личные сообщения хайранам с просьбой рассмотреть вашу заявку или дать баллы.</p>                           
+            <h3 onclick="toggleCollapse('points-content')">Будут ли Баллы?</h3>
+            <div class="collapsible-content" id="points-content">
+                <div class="faq-item">
+                    <p>Да, после каждого сбора будут выписаны баллы, и их количество зависит только от вас.</p>
+                    <p>Примечание: Не нужно писать в личные сообщения хайранам с просьбой рассмотреть вашу заявку или дать баллы.</p>                           
+                </div>
             </div>
 
-            <h3>Когда выдадут спецуху?</h3>
-             <div class="faq-item">
-                <p>После того как вам одобрят заявку, storekeeper всех тегнет, когда будет выдача.</p>
-                <p>Примечание: После того как вы получите спецуху, оставьте отчет здесь: <a href="https://discord.com/channels/1382607727507017739/1382607729142530111">Тык*</a>.</p>                           
+            <h3 onclick="toggleCollapse('special-content')">Когда выдадут спецуху?</h3>
+            <div class="collapsible-content" id="special-content">
+                <div class="faq-item">
+                    <p>После того как вам одобрят заявку, storekeeper всех тегнет, когда будет выдача.</p>
+                    <p>Примечание: После того как вы получите спецуху, оставьте отчет здесь: <a href="https://discord.com/channels/1382607727507017739/1382607729142530111">Тык*</a>.</p>                           
+                </div>
             </div>
 
-            <h3>Почему склад с 6-7 ранга?</h3>
-             <div class="faq-item">
-                <p>Людей много, и не всегда есть возможность прокормить всех.</p>                       
+            <h3 onclick="toggleCollapse('warehouse-content')">Почему склад с 6-7 ранга?</h3>
+            <div class="collapsible-content" id="warehouse-content">
+                <div class="faq-item">
+                    <p>Людей много, и не всегда есть возможность прокормить всех.</p>                       
+                </div>
             </div>
         </section>
 
         <section id="postanovleniya">
-            <h2>Постановления /Work in progress</h2>
+            <h2>Постановления /Work in Finished but not approved</h2>
             
             <div class="postanovleniya-container">
 
@@ -1636,6 +1674,54 @@
                     }, 500);
                 });
             });
+        });
+
+        document.getElementById('uk-table-content').addEventListener('click', function() {
+            toggleCollapse('uk-table-content');
+        });
+
+        document.getElementById('promotion-content').addEventListener('click', function() {
+            toggleCollapse('promotion-content');
+        });
+
+        document.getElementById('report-rejected-content').addEventListener('click', function() {
+            toggleCollapse('report-rejected-content');
+        });
+
+        document.getElementById('cid-content').addEventListener('click', function() {
+            toggleCollapse('cid-content');
+        });
+
+        document.getElementById('fa-content').addEventListener('click', function() {
+            toggleCollapse('fa-content');
+        });
+
+        document.getElementById('points-content').addEventListener('click', function() {
+            toggleCollapse('points-content');
+        });
+
+        document.getElementById('special-content').addEventListener('click', function() {
+            toggleCollapse('special-content');
+        });
+
+        document.getElementById('warehouse-content').addEventListener('click', function() {
+            toggleCollapse('warehouse-content');
+        });
+
+        document.getElementById('guilt-forms-content').addEventListener('click', function() {
+            toggleCollapse('guilt-forms-content');
+        });
+
+        document.getElementById('procedural-knowledge-content').addEventListener('click', function() {
+            toggleCollapse('procedural-knowledge-content');
+        });
+
+        document.getElementById('lawyer-crime-content').addEventListener('click', function() {
+            toggleCollapse('lawyer-crime-content');
+        });
+
+        document.getElementById('common-articles-content').addEventListener('click', function() {
+            toggleCollapse('common-articles-content');
         });
     </script>
 </body>
