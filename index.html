@@ -974,15 +974,6 @@
             color: #7c5c00;
             border-color: #ffd700;
         }
-        .warning-emoji {
-            animation: pulse-warning 1s infinite;
-            font-size: 1.3em;
-        }
-        @keyframes pulse-warning {
-            0% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.25); filter: brightness(1.5); }
-            100% { transform: scale(1); filter: brightness(1); }
-        }
         .explanation-modal {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -1423,24 +1414,13 @@
         <section id="protected-territories">
     <div class="explanation-title-row">
         <h2>Закон о закрытых или особо охраняемых территориях</h2>
-        <button id="explanation-btn" class="explanation-btn" type="button">
-            <span class="warning-emoji" role="img" aria-label="warning">⚠️</span> Пояснение
-        </button>
+ 
     </div>
     <div class="explanation-row">
         <h3 class="explanation-heading" onclick="toggleCollapse('categories-content')">Статья 1. Категории охраняемых территорий | Статья 2. Особо охраняемыме объекты | Статья 5. Визуализация территорий определена изображениями: ​</h3>
     </div>
     <div id="explanation-modal" class="explanation-modal" style="display: none;">
-        <div class="explanation-modal-content">
-            <div class="explanation-modal-header">
-                <span class="warning-emoji" role="img" aria-label="warning">⚠️</span>
-                <h2>Пояснение</h2>
-            </div>
-            <div class="explanation-modal-body">
-                <p>Внимание! Вы как сотрудник FIB не можите находится без оснований на територий : Los Santos Police Department ; Sheriff Department Capitol of state of san andreas ; San Andreas National Guard. </p>
-            </div>
-            <button class="explanation-modal-close" id="explanation-modal-close">Закрыть</button>
-        </div>
+
     </div>
     <div class="collapsible-content" id="categories-content">
         <div class="rule-content">
