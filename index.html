@@ -1,2031 +1,2028 @@
-    <!DOCTYPE html>
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>FIB Majestic RP</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-        <style>
-            :root {
-                --black: #0a192f;
-                --dark-gray: #112240;
-                --gray: #1d3461;
-                --light-gray: #2a4d8f;
-                --text: #e0e0e0;
-                --text-light: #ffffff;
-                --accent: #64ffda;
-                --accent-hover: #4cd8b2;
-                --border: #233554;
-                --border-bright: #3a5f9c;
-                --card-bg: #112240;
-                --button-bg: #1d3461;
-                --button-hover: #2a4d8f;
-                --delete-btn: #ff4d4d;
-                --delete-btn-hover: #ff3333;
-                --shadow: rgba(0, 0, 0, 0.3);
-                --transition-speed: 0.3s;
-                --link-btn: #4a90e2;
-                --link-btn-hover: #357abd;
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FIB Majestic RP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --black: #0a192f;
+            --dark-gray: #112240;
+            --gray: #1d3461;
+            --light-gray: #2a4d8f;
+            --text: #e0e0e0;
+            --text-light: #ffffff;
+            --accent: #64ffda;
+            --accent-hover: #4cd8b2;
+            --border: #233554;
+            --border-bright: #3a5f9c;
+            --card-bg: #112240;
+            --button-bg: #1d3461;
+            --button-hover: #2a4d8f;
+            --delete-btn: #ff4d4d;
+            --delete-btn-hover: #ff3333;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --transition-speed: 0.3s;
+            --link-btn: #4a90e2;
+            --link-btn-hover: #357abd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            transition: all var(--transition-speed) ease;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -ms-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+        
+        @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .navbar {
+            background-color: var(--dark-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            max-width: 100%;
+            border-bottom: 2px solid var(--border-bright);
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            height: 3.5rem;
+        }
+
+        .logo {
+            height: 3.5rem;
+            width: 3.5rem;
+            min-width: 3.5rem;
+            min-height: 3.5rem;
+            max-height: 3.5rem;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 1rem;
+            border: 1px solid var(--accent);
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .logo:hover {
+            animation: logoRotate 3s linear infinite;
+        }
+
+        @keyframes logoRotate {
+            0% {
+                transform: rotate(0deg);
             }
-            
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-                transition: all var(--transition-speed) ease;
-                -webkit-text-size-adjust: none;
-                -moz-text-size-adjust: none;
-                -ms-text-size-adjust: none;
-                text-size-adjust: none;
+            100% {
+                transform: rotate(360deg);
             }
-            
-            html {
-                scroll-behavior: smooth;
-                scroll-padding-top: 100px;
+        }
+
+        .logo1 {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 1px solid var(--accent);
+            transition: transform 0.5s ease;
+        }
+
+        .logo1:hover {
+            animation: logoRotate 3s linear infinite;
+        }
+
+        .navbar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--dark-gray);
+            z-index: -1;
+            transition: transform 0.5s ease;
+        }
+
+        .navbar:hover::after {
+            animation: navbarRotate 3s linear infinite;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            list-style: none;
+            flex-wrap: wrap;
+            transition: transform 0.5s ease;
+            margin-top: 25px;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            height: 2.5rem;
+            padding: 0 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 1.5rem;
+            font-size: 1.08rem;
+            background: rgba(76, 255, 218, 0.08);
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width var(--transition-speed) ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            background: var(--accent);
+            color: var(--black);
+            box-shadow: 0 4px 16px var(--shadow);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+        
+        section {
+            background-color: var(--dark-gray);
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 4px 6px var(--shadow);
+            border-radius: 4px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            @font-face {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 400;
-                src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            
-            body {
-                background-color: var(--black);
-                color: var(--text);
-                line-height: 1.6;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            cursor: pointer;
+            padding: 0.75rem;
+            background-color: var(--gray);
+            border-radius: 4px;
+            transition: all var(--transition-speed) ease;
+            border: 1px solid var(--border);
+            position: relative;
+            padding-right: 2.5rem;
+        }
+        
+        h3:hover {
+            background-color: var(--light-gray);
+            transform: translateX(10px);
+        }
+
+        h3::after {
+            content: '+';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        h3.active::after {
+            content: '-';
+            transform: translateY(-50%);
+        }
+
+        /* New styles for important buttons */
+        h3.important-button {
+            background-color: var(--light-gray);
+            border: 2px solid var(--accent);
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 1rem;
+            box-shadow: 0 4px 8px var(--shadow);
+            margin: 2rem 0;
+        }
+
+        h3.important-button:hover {
+            background-color: var(--accent);
+            color: var(--black);
+            transform: translateX(10px) scale(1.02);
+        }
+
+        h3.important-button::after {
+            font-size: 1.8rem;
+            right: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+        
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .code-section, .article-item, .rule-content {
+            background: var(--gray);
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 4px 6px var(--shadow);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        
+        .code-section:hover, .article-item:hover, .rule-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px var(--shadow);
+        }
+        
+        .code-section {
+            border-left: 3px solid var(--accent);
+        }
+        
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 1.25rem;
+            transition: all 0.5s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .collapsible-content.active {
+            max-height: 10000px;
+            padding: 1.25rem;
+            background: var(--gray);
+            border-radius: 0 0 4px 4px;
+            animation: expand 0.5s ease;
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @keyframes expand {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
             }
-            
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .faq-item {
+            background: var(--gray);
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 4px 6px var(--shadow);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+            transition: all 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--accent-hover);
+            border-bottom-color: transparent;
+        }
+        
+        .crime-composition {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .composition-block {
+            background-color: var(--gray);
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 4px 6px var(--shadow);
+            border-radius: 4px;
+            padding: 1rem;
+            width: 100%;
+            max-width: 450px;
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .block-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-light);
+        }
+        
+        .sub-block {
+            margin-bottom: 1rem;
+        }
+        
+        .sub-block-title {
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+        }
+        
+        .item {
+            margin-left: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .required {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .plus-sign {
+            font-size: 1.5rem;
+            align-self: center;
+            margin: 0 0.5rem;
+            color: var(--accent);
+        }
+        
+        .explanation {
+            max-width: 800px;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: var(--gray);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        
+        .section-connector {
+            position: relative;
+            height: 1rem;
+            margin: 0.75rem 0;
+        }
+        
+        .section-connector:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: var(--border);
+        }
+        
+        .investigation-list {
+            columns: 2;
+            column-gap: 2rem;
+            margin: 1rem 0;
+        }
+        
+        .investigation-list li {
+            break-inside: avoid;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .useful-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .link-card {
+            background: var(--gray);
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 4px 6px var(--shadow);
+            border-radius: 4px;
+            padding: 1.25rem;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px var(--shadow);
+        }
+        
+        .link-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        
+        .link-card p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .link-card a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--link-btn);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-weight: 500;
+            border: none;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .link-card a:hover {
+            background: var(--link-btn-hover);
+            color: var(--text-light);
+            transform: translateY(-2px);
+        }
+
+        .uk-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background-color: var(--black);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 8px 16px var(--shadow);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .uk-fullscreen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-bright);
+        }
+        
+        .uk-fullscreen-close {
+            background-color: var(--border);
+            color: var(--text-light);
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 2px 4px var(--shadow);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .uk-fullscreen-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .uk-fullscreen-iframe {
+            flex-grow: 1;
+            border: none;
+            width: 100%;
+            height: calc(100% - 50px);
+        }
+        
+        .uk-fullscreen-btn {
+            background-color: var(--gray);
+            color: var(--text-light);
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 2px 4px var(--shadow);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .uk-fullscreen-btn:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            width: 100%;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        .Red {
+            color: red;
+        }
+        
+        @media (max-width: 992px) {
             .navbar {
-                background-color: var(--dark-gray);
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 1rem 2rem;
-                position: sticky;
-                top: 0;
-                z-index: 1000;
-                width: 100%;
-                max-width: 100%;
-                border-bottom: 2px solid var(--border-bright);
-                box-shadow: 0 4px 6px var(--shadow);
-                transition: all 0.3s ease;
-            }
-
-            .logo-container {
-                display: flex;
-                align-items: center;
-                transition: all 0.3s ease;
-                position: relative;
-            }
-
-            .logo {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                object-fit: cover;
-                margin-right: 1rem;
-                border: 1px solid var(--accent);
-                transition: transform 0.5s ease;
-            }
-
-            .logo:hover {
-                animation: logoRotate 3s linear infinite;
-            }
-
-            @keyframes logoRotate {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-
-            .logo1 {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                object-fit: cover;
-                margin-right: 1rem;
-                border: 1px solid var(--accent);
-                transition: transform 0.5s ease;
-            }
-
-            .logo1:hover {
-                animation: logoRotate 3s linear infinite;
-            }
-
-            .navbar::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: var(--dark-gray);
-                z-index: -1;
-                transition: transform 0.5s ease;
-            }
-
-            .navbar:hover::after {
-                animation: navbarRotate 3s linear infinite;
+                padding: 1rem 0.5rem 0.7rem 0.5rem;
             }
             
             .nav-links {
-                display: flex;
-                list-style: none;
-                flex-wrap: wrap;
-                transition: transform 0.5s ease;
-            }
-            
-            .nav-links li {
-                margin-left: 1.5rem;
+                gap: 0.7rem;
+                min-height: 44px;
+                height: 44px;
             }
             
             .nav-links a {
-                color: var(--text);
-                text-decoration: none;
-                font-weight: 500;
-                padding: 0.5rem 0;
-                position: relative;
-                font-size: 1rem;
-                transition: color var(--transition-speed) ease;
-            }
-            
-            .nav-links a::after {
-                content: '';
-                position: absolute;
-                width: 0;
-                height: 1px;
-                bottom: 0;
-                left: 0;
-                background-color: var(--accent);
-                transition: width var(--transition-speed) ease;
-            }
-            
-            .nav-links a:hover::after {
-                width: 100%;
+                padding: 0.5rem 1rem;
+                font-size: 0.98rem;
+                height: 32px;
             }
             
             .container {
-                max-width: 1200px;
-                margin: 2rem auto;
-                padding: 0 1.5rem;
-                width: 100%;
+                padding: 0 1rem;
             }
             
             section {
-                background-color: var(--dark-gray);
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 4px 6px var(--shadow);
-                border-radius: 4px;
-                padding: 2rem;
-                margin-bottom: 2rem;
-                animation: fadeIn 0.5s ease;
-            }
-            
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            h1, h2, h3, h4 {
-                color: var(--text-light);
-                margin-bottom: 1.25rem;
-                font-weight: 600;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.75rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 1px solid var(--border);
-            }
-            
-            h3 {
-                font-size: 1.4rem;
-                margin-top: 1.5rem;
-                cursor: pointer;
-                padding: 0.75rem;
-                background-color: var(--gray);
-                border-radius: 4px;
-                transition: all var(--transition-speed) ease;
-                border: 1px solid var(--border);
-                position: relative;
-                padding-right: 2.5rem;
-            }
-            
-            h3:hover {
-                background-color: var(--light-gray);
-                transform: translateX(10px);
-            }
-
-            h3::after {
-                content: '+';
-                position: absolute;
-                right: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 1.5rem;
-                transition: transform var(--transition-speed) ease;
-            }
-
-            h3.active::after {
-                content: '-';
-                transform: translateY(-50%);
-            }
-
-            /* New styles for important buttons */
-            h3.important-button {
-                background-color: var(--light-gray);
-                border: 2px solid var(--accent);
-                color: var(--text-light);
-                font-weight: 600;
-                padding: 1rem;
-                box-shadow: 0 4px 8px var(--shadow);
-                margin: 2rem 0;
-            }
-
-            h3.important-button:hover {
-                background-color: var(--accent);
-                color: var(--black);
-                transform: translateX(10px) scale(1.02);
-            }
-
-            h3.important-button::after {
-                font-size: 1.8rem;
-                right: 1.5rem;
-            }
-            
-            p {
-                margin-bottom: 1.25rem;
-                font-size: 1rem;
-            }
-            
-            ul, ol {
-                margin-left: 1.5rem;
-                margin-bottom: 1.25rem;
-            }
-            
-            li {
-                margin-bottom: 0.5rem;
-            }
-            
-            .code-section, .article-item, .rule-content {
-                background: var(--gray);
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 4px 6px var(--shadow);
-                padding: 1.25rem;
-                margin-bottom: 1.5rem;
-                border-radius: 4px;
-                transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            }
-            
-            .code-section:hover, .article-item:hover, .rule-content:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 6px 12px var(--shadow);
-            }
-            
-            .code-section {
-                border-left: 3px solid var(--accent);
-            }
-            
-            .collapsible-content {
-                max-height: 0;
-                overflow: hidden;
-                padding: 0 1.25rem;
-                transition: all 0.5s ease;
-                opacity: 0;
-                visibility: hidden;
-            }
-            
-            .collapsible-content.active {
-                max-height: 10000px;
-                padding: 1.25rem;
-                background: var(--gray);
-                border-radius: 0 0 4px 4px;
-                animation: expand 0.5s ease;
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            @keyframes expand {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            .faq-item {
-                background: var(--gray);
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 4px 6px var(--shadow);
-                padding: 1rem;
-                margin-bottom: 1rem;
-                border-radius: 4px;
-            }
-            
-            a {
-                color: var(--accent);
-                text-decoration: none;
-                border-bottom: 1px solid var(--accent);
-                transition: all 0.2s ease;
-            }
-            
-            a:hover {
-                color: var(--accent-hover);
-                border-bottom-color: transparent;
-            }
-            
-            .crime-composition {
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-                gap: 1rem;
-                margin: 2rem 0;
-                flex-wrap: wrap;
-            }
-            
-            .composition-block {
-                background-color: var(--gray);
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 4px 6px var(--shadow);
-                border-radius: 4px;
-                padding: 1rem;
-                width: 100%;
-                max-width: 450px;
-                flex: 1;
-                min-width: 300px;
-            }
-            
-            .block-title {
-                font-weight: 600;
-                font-size: 1.1rem;
-                text-align: center;
-                margin-bottom: 1rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 1px solid var(--border);
-                color: var(--text-light);
-            }
-            
-            .sub-block {
-                margin-bottom: 1rem;
-            }
-            
-            .sub-block-title {
-                font-weight: 500;
-                margin-bottom: 0.75rem;
-                color: var(--text-light);
-            }
-            
-            .item {
-                margin-left: 1rem;
-                margin-bottom: 0.5rem;
-                font-size: 0.95rem;
-            }
-            
-            .required {
-                color: var(--text-light);
-                font-weight: 500;
-            }
-            
-            .plus-sign {
-                font-size: 1.5rem;
-                align-self: center;
-                margin: 0 0.5rem;
-                color: var(--accent);
-            }
-            
-            .explanation {
-                max-width: 800px;
-                margin-top: 1.5rem;
-                padding: 1rem;
-                background-color: var(--gray);
-                border: 1px solid var(--border);
-                border-radius: 4px;
-                font-size: 0.95rem;
-            }
-            
-            .section-connector {
-                position: relative;
-                height: 1rem;
-                margin: 0.75rem 0;
-            }
-            
-            .section-connector:before {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 0;
-                right: 0;
-                height: 1px;
-                background-color: var(--border);
+                padding: 1.5rem;
             }
             
             .investigation-list {
-                columns: 2;
-                column-gap: 2rem;
-                margin: 1rem 0;
+                columns: 1;
             }
             
-            .investigation-list li {
-                break-inside: avoid;
-                margin-bottom: 0.5rem;
-                font-size: 0.95rem;
+            .crime-composition {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .composition-block {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.25rem;
+            }
+            
+            .crime-composition {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .plus-sign {
+                transform: rotate(90deg);
+                margin: 1rem 0;
             }
 
             .useful-links {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 1rem;
-                margin-top: 1rem;
+                grid-template-columns: 1fr;
             }
             
-            .link-card {
-                background: var(--gray);
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 4px 6px var(--shadow);
-                border-radius: 4px;
-                padding: 1.25rem;
-                transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-            }
-            
-            .link-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 6px 12px var(--shadow);
-            }
-            
-            .link-card h4 {
-                margin-bottom: 0.5rem;
-                color: var(--text-light);
-            }
-            
-            .link-card p {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
                 margin-bottom: 1rem;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            h3 {
+                font-size: 1.15rem;
+                padding: 0.75rem;
+            }
+            
+            p, li {
                 font-size: 0.95rem;
             }
             
-            .link-card a {
-                display: inline-block;
-                padding: 0.5rem 1rem;
-                background: var(--link-btn);
-                border-radius: 4px;
-                color: var(--text-light);
-                font-weight: 500;
-                border: none;
-                transition: all var(--transition-speed) ease;
+            section {
+                padding: 1.25rem;
             }
             
-            .link-card a:hover {
-                background: var(--link-btn-hover);
-                color: var(--text-light);
-                transform: translateY(-2px);
-            }
-
-            .uk-fullscreen {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1000;
-                background-color: var(--black);
+            .code-section, .article-item, .rule-content {
                 padding: 1rem;
-                display: flex;
-                flex-direction: column;
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 8px 16px var(--shadow);
-                animation: fadeIn 0.3s ease;
             }
             
-            .uk-fullscreen-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 1rem;
-                padding-bottom: 0.5rem;
-                border-bottom: 2px solid var(--border-bright);
-            }
-            
-            .uk-fullscreen-close {
-                background-color: var(--border);
-                color: var(--text-light);
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 2px 4px var(--shadow);
-                border-radius: 4px;
-                cursor: pointer;
-                font-weight: 500;
-                transition: all var(--transition-speed) ease;
-            }
-            
-            .uk-fullscreen-close:hover {
-                transform: rotate(90deg);
-            }
-            
-            .uk-fullscreen-iframe {
-                flex-grow: 1;
-                border: none;
-                width: 100%;
-                height: calc(100% - 50px);
-            }
-            
-            .uk-fullscreen-btn {
-                background-color: var(--gray);
-                color: var(--text-light);
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 2px 4px var(--shadow);
-                border-radius: 4px;
-                cursor: pointer;
-                font-weight: 500;
-                margin-top: 1rem;
-                display: inline-block;
-                padding: 0.75rem 1.5rem;
-                transition: all var(--transition-speed) ease;
-            }
-            
-            .uk-fullscreen-btn:hover {
-                background-color: var(--light-gray);
-                transform: translateY(-2px);
-            }
-            
-            footer {
-                background-color: var(--dark-gray);
-                color: var(--text);
-                text-align: center;
-                padding: 2rem 0;
-                margin-top: 3rem;
-                width: 100%;
-                border-top: 1px solid var(--border);
-                font-size: 0.9rem;
-            }
-            .Red {
-                color: red;
-            }
-            
-            @media (max-width: 992px) {
-                .navbar {
-                    padding: 1rem;
-                    flex-direction: column;
-                }
-                
-                .nav-links {
-                    margin-top: 1rem;
-                }
-                
-                .nav-links li {
-                    margin: 0.5rem 1rem;
-                }
-                
-                .container {
-                    padding: 0 1rem;
-                }
-                
-                section {
-                    padding: 1.5rem;
-                }
-                
-                .investigation-list {
-                    columns: 1;
-                }
-                
-                .crime-composition {
-                    flex-direction: column;
-                    align-items: center;
-                }
-                
-                .composition-block {
-                    max-width: 100%;
-                }
-            }
-            
-            @media (max-width: 768px) {
-                h1 {
-                    font-size: 1.75rem;
-                }
-                
-                h2 {
-                    font-size: 1.5rem;
-                }
-                
-                h3 {
-                    font-size: 1.25rem;
-                }
-                
-                .crime-composition {
-                    flex-direction: column;
-                    align-items: center;
-                }
-                
-                .plus-sign {
-                    transform: rotate(90deg);
-                    margin: 1rem 0;
-                }
-
-                .useful-links {
-                    grid-template-columns: 1fr;
-                }
-                
-                .logo-container {
-                    flex-direction: column;
-                    text-align: center;
-                    margin-bottom: 1rem;
-                }
-                
-                .logo {
-                    margin-right: 0;
-                    margin-bottom: 0.5rem;
-                }
-            }
-            
-            @media (max-width: 480px) {
-                h1 {
-                    font-size: 1.5rem;
-                }
-                
-                h2 {
-                    font-size: 1.3rem;
-                }
-                
-                h3 {
-                    font-size: 1.15rem;
-                    padding: 0.75rem;
-                }
-                
-                p, li {
-                    font-size: 0.95rem;
-                }
-                
-                section {
-                    padding: 1.25rem;
-                }
-                
-                .code-section, .article-item, .rule-content {
-                    padding: 1rem;
-                }
-                
-                .composition-block {
-                    padding: 0.75rem;
-                }
-                
-                .block-title {
-                    font-size: 1rem;
-                }
-                
-                .nav-links {
-                    justify-content: center;
-                }
-                
-                .nav-links li {
-                    margin: 0.5rem;
-                }
-            }
-
-            .postanovleniya-container {
-                background: var(--gray);
-                padding: 2rem;
-                border-radius: 4px;
-                margin-top: 1rem;
-            }
-
-            .admin-panel, .admin-login {
-                background: var(--dark-gray);
-                padding: 1.5rem;
-                border-radius: 4px;
-                margin-bottom: 2rem;
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 4px 6px var(--shadow);
-            }
-
-            .post-form, .login-form {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .form-group {
-                display: flex;
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .form-group label {
-                color: var(--text-light);
-                font-weight: 500;
-            }
-
-            .form-group input, .form-group textarea {
+            .composition-block {
                 padding: 0.75rem;
-                border-radius: 4px;
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 2px 4px var(--shadow);
-                background: var(--gray);
-                color: var(--text);
-                font-size: 1rem;
-                transition: all var(--transition-speed) ease;
-            }
-
-            .form-group textarea {
-                min-height: 150px;
-                resize: vertical;
-            }
-
-            .form-group input:focus, .form-group textarea:focus {
-                border-color: var(--accent);
-                box-shadow: 0 0 0 2px var(--accent-hover);
-                outline: none;
-                transform: translateY(-2px);
-            }
-
-            .submit-btn, .login-btn, .logout-btn {
-                background: var(--accent);
-                color: var(--black);
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 2px 4px var(--shadow);
-                border-radius: 4px;
-                cursor: pointer;
-                font-weight: 500;
-                padding: 0.75rem 1.5rem;
-                transition: all var(--transition-speed) ease;
-            }
-
-            .submit-btn:hover, .login-btn:hover, .logout-btn:hover {
-                background: var(--accent-hover);
-                transform: translateY(-2px);
-            }
-
-            .posts-list {
-                display: grid;
-                gap: 1.5rem;
-                margin-top: 1.5rem;
-            }
-
-            .post-card {
-                background: var(--card-bg);
-                padding: 1.5rem;
-                border-radius: 4px;
-                border: 2px solid var(--border-bright);
-                box-shadow: 0 4px 6px var(--shadow);
-                transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
             }
             
-            .post-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 6px 12px var(--shadow);
-            }
-
-            .post-card h4 {
-                color: var(--text-light);
-                margin-bottom: 1rem;
-            }
-
-            .post-card p {
-                margin-bottom: 1rem;
-            }
-
-            .post-card img {
-                max-width: 100%;
-                border-radius: 4px;
-                margin-top: 1rem;
-            }
-
-            .post-actions {
-                display: flex;
-                gap: 1rem;
-                margin-top: 1rem;
-            }
-
-            .delete-btn {
-                background: var(--delete-btn);
-                color: white;
-                border: 2px solid var(--delete-btn);
-                box-shadow: 0 2px 4px var(--shadow);
-                border-radius: 4px;
-                cursor: pointer;
-                font-weight: 500;
-                padding: 0.5rem 1rem;
-                transition: all var(--transition-speed) ease;
+            .block-title {
+                font-size: 1rem;
             }
             
-            .delete-btn:hover {
-                background: var(--delete-btn-hover);
-                transform: translateY(-2px);
-            }
-
-            .admin-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 1.5rem;
-            }
-
-            /* Loading animation for images */
-            img {
-                transition: opacity var(--transition-speed) ease;
-            }
-
-            img[loading] {
-                opacity: 0;
-            }
-
-            img.loaded {
-                opacity: 1;
-            }
-
-            /* Add loading animation to the page */
-            .loading {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: var(--black);
-                display: flex;
+            .nav-links {
                 justify-content: center;
-                align-items: center;
-                z-index: 9999;
-                animation: fadeOut 0.5s ease 1s forwards;
             }
+            
+            .nav-links li {
+                margin: 0.5rem;
+            }
+        }
 
-            @keyframes fadeOut {
-                to {
-                    opacity: 0;
-                    visibility: hidden;
-                }
-            }
+        .postanovleniya-container {
+            background: var(--gray);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
 
-            .loading-spinner {
-                width: 50px;
-                height: 50px;
-                border: 3px solid var(--border);
-                border-top-color: var(--accent);
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-            }
+        .admin-panel, .admin-login {
+            background: var(--dark-gray);
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 4px 6px var(--shadow);
+        }
 
-            @keyframes spin {
-                to {
-                    transform: rotate(360deg);
-                }
-            }
+        .post-form, .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
 
-            h3[onclick] {
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent;
-                touch-action: manipulation;
-            }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
 
-            .logo-title-group {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                position: relative;
-            }
-            .logo-by-connor {
-                display: block;
-                position: absolute;
-                left: 0;
-                top: 60%;
-                white-space: nowrap;
+        .form-group label {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 0.75rem;
+            border-radius: 4px;
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 2px 4px var(--shadow);
+            background: var(--gray);
+            color: var(--text);
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent-hover);
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn, .login-btn, .logout-btn {
+            background: var(--accent);
+            color: var(--black);
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 2px 4px var(--shadow);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .submit-btn:hover, .login-btn:hover, .logout-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .posts-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .post-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border: 2px solid var(--border-bright);
+            box-shadow: 0 4px 6px var(--shadow);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px var(--shadow);
+        }
+
+        .post-card h4 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .post-card p {
+            margin-bottom: 1rem;
+        }
+
+        .post-card img {
+            max-width: 100%;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .delete-btn {
+            background: var(--delete-btn);
+            color: white;
+            border: 2px solid var(--delete-btn);
+            box-shadow: 0 2px 4px var(--shadow);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+        
+        .delete-btn:hover {
+            background: var(--delete-btn-hover);
+            transform: translateY(-2px);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        img {
+            transition: opacity var(--transition-speed) ease;
+        }
+
+        img[loading] {
+            opacity: 0;
+        }
+
+        img.loaded {
+            opacity: 1;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.5s ease 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
                 opacity: 0;
-                pointer-events: none;
-                font-size: 1rem;
-                color: var(--accent);
-                font-weight: 500;
-                letter-spacing: 0.5px;
-                transform: translateY(0);
-                transition: opacity 0.3s, transform 0.3s;
+                visibility: hidden;
             }
-            .logo-container:hover .logo-by-connor,
-            .logo:focus + .logo-title-group .logo-by-connor {
-                opacity: 1;
-                transform: translateY(0);
-                pointer-events: auto;
-            }
+        }
 
-            .explanation-btn {
-                background: #fffbe6;
-                color: #b8860b;
-                border: 2px solid #ffe066;
-                border-radius: 4px;
-                font-weight: 600;
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                cursor: pointer;
-                box-shadow: 0 2px 6px var(--shadow);
-                transition: background 0.2s, color 0.2s, border 0.2s;
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
             }
-            .explanation-btn:hover {
-                background: #ffe066;
-                color: #7c5c00;
-                border-color: #ffd700;
-            }
-            .warning-emoji {
-                animation: pulse-warning 1s infinite;
-                font-size: 1.3em;
-            }
-            @keyframes pulse-warning {
-                0% { transform: scale(1); filter: brightness(1); }
-                50% { transform: scale(1.25); filter: brightness(1.5); }
-                100% { transform: scale(1); filter: brightness(1); }
-            }
-            /* Explanation Modal Styles */
-            .explanation-modal {
-                position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
-                width: 100vw;
-                height: 100vh;
-                background: rgba(10, 25, 47, 0.97);
-                z-index: 2000;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                animation: fadeInModal 0.4s cubic-bezier(.4,0,.2,1);
-            }
-            .explanation-modal[aria-hidden="true"] {
-                animation: fadeOutModal 0.3s cubic-bezier(.4,0,.2,1);
-            }
-            @keyframes fadeInModal {
-                from { opacity: 0; }
-                to { opacity: 1; }
-            }
-            @keyframes fadeOutModal {
-                from { opacity: 1; }
-                to { opacity: 0; }
-            }
+        }
+
+        h3[onclick] {
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        .logo-title-group {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .logo-title-group h1 {
+            font-size: 2rem;
+            line-height: 1;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            height: 2.5rem;
+        }
+        .logo-by-connor {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 60%;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transform: translateY(0);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .logo-container:hover .logo-by-connor,
+        .logo:focus + .logo-title-group .logo-by-connor {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .explanation-btn {
+            background: #fffbe6;
+            color: #b8860b;
+            border: 2px solid #ffe066;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 6px var(--shadow);
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .explanation-btn:hover {
+            background: #ffe066;
+            color: #7c5c00;
+            border-color: #ffd700;
+        }
+        .warning-emoji {
+            animation: pulse-warning 1s infinite;
+            font-size: 1.3em;
+        }
+        @keyframes pulse-warning {
+            0% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.25); filter: brightness(1.5); }
+            100% { transform: scale(1); filter: brightness(1); }
+        }
+        .explanation-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(10, 25, 47, 0.97);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInModal 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .explanation-modal[aria-hidden="true"] {
+            animation: fadeOutModal 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOutModal {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .explanation-modal-content {
+            background: #fffbe6;
+            color: #222;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+            max-width: 420px;
+            width: 90vw;
+            padding: 2.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            animation: modalPopIn 0.5s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes modalPopIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .explanation-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.2rem;
+        }
+        .explanation-modal-header h2 {
+            color: #b8860b;
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .explanation-modal-body {
+            font-size: 1.1rem;
+            color: #222;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .explanation-modal-close {
+            background: #ffe066;
+            color: #7c5c00;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.7rem 2.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: background 0.2s, color 0.2s;
+        }
+        .explanation-modal-close:hover {
+            background: #ffd700;
+            color: #b8860b;
+        }
+        @media (max-width: 600px) {
             .explanation-modal-content {
-                background: #fffbe6;
-                color: #222;
-                border-radius: 12px;
-                box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
-                max-width: 420px;
-                width: 90vw;
-                padding: 2.5rem 2rem 2rem 2rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                position: relative;
-                animation: modalPopIn 0.5s cubic-bezier(.4,0,.2,1);
-            }
-            @keyframes modalPopIn {
-                from { transform: scale(0.85); opacity: 0; }
-                to { transform: scale(1); opacity: 1; }
-            }
-            .explanation-modal-header {
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                margin-bottom: 1.2rem;
+                padding: 1.2rem 0.5rem 1rem 0.5rem;
             }
             .explanation-modal-header h2 {
-                color: #b8860b;
-                margin: 0;
-                font-size: 1.5rem;
-                font-weight: 700;
-            }
-            .explanation-modal-body {
                 font-size: 1.1rem;
-                color: #222;
-                margin-bottom: 2rem;
-                text-align: center;
             }
-            .explanation-modal-close {
-                background: #ffe066;
-                color: #7c5c00;
-                border: none;
-                border-radius: 4px;
-                font-size: 1.1rem;
-                font-weight: 600;
-                padding: 0.7rem 2.2rem;
-                cursor: pointer;
-                box-shadow: 0 2px 8px var(--shadow);
-                transition: background 0.2s, color 0.2s;
-            }
-            .explanation-modal-close:hover {
-                background: #ffd700;
-                color: #b8860b;
-            }
-            @media (max-width: 600px) {
-                .explanation-modal-content {
-                    padding: 1.2rem 0.5rem 1rem 0.5rem;
-                }
-                .explanation-modal-header h2 {
-                    font-size: 1.1rem;
-                }
-            }
+        }
 
-            .explanation-row {
-                display: flex;
-                align-items: stretch;
-                gap: 0.5rem;
-                margin-bottom: 0.5rem;
-            }
-            .explanation-btn, .explanation-heading {
-                height: 100%;
-                display: flex;
-                align-items: center;
+        .explanation-row {
+            display: flex;
+            align-items: stretch;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .explanation-btn, .explanation-heading {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .explanation-btn {
+            background: #fffbe6;
+            color: #b8860b;
+            border: 2px solid #ffe066;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0 1.2rem;
+            min-width: 120px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 6px var(--shadow);
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            justify-content: center;
+            height: 44px;
+        }
+        .explanation-btn:hover {
+            background: #ffe066;
+            color: #7c5c00;
+            border-color: #ffd700;
+        }
+        .explanation-heading {
+            flex: 1;
+            margin: 0;
+            font-size: 1.15rem;
+            padding: 0 1rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background-color: var(--gray);
+            color: var(--text-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+        }
+        .explanation-heading:hover {
+            background-color: var(--light-gray);
+            transform: translateX(10px);
+        }
+        .explanation-heading::after {
+            content: '+';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            transition: transform var(--transition-speed) ease;
+        }
+        .explanation-heading.active::after {
+            content: '-';
+            transform: translateY(-50%);
+        }
+        @media (max-width: 600px) {
+            .explanation-heading {
+                font-size: 1rem;
+                padding: 0 0.5rem;
             }
             .explanation-btn {
-                background: #fffbe6;
-                color: #b8860b;
-                border: 2px solid #ffe066;
-                border-radius: 4px;
-                font-weight: 600;
-                font-size: 1rem;
-                padding: 0 1.2rem;
-                min-width: 120px;
-                box-sizing: border-box;
-                box-shadow: 0 2px 6px var(--shadow);
-                transition: background 0.2s, color 0.2s, border 0.2s;
-                justify-content: center;
-                height: 44px;
+                font-size: 0.95rem;
+                min-width: 90px;
+                padding: 0 0.7rem;
             }
-            .explanation-btn:hover {
-                background: #ffe066;
-                color: #7c5c00;
-                border-color: #ffd700;
-            }
-            .explanation-heading {
-                flex: 1;
-                margin: 0;
-                font-size: 1.15rem;
-                padding: 0 1rem;
-                border-radius: 4px;
-                border: 1px solid var(--border);
-                background-color: var(--gray);
-                color: var(--text-light);
-                font-weight: 600;
-                cursor: pointer;
-                transition: all var(--transition-speed) ease;
-                display: flex;
-                align-items: center;
-                min-height: 44px;
-            }
-            .explanation-heading:hover {
-                background-color: var(--light-gray);
-                transform: translateX(10px);
-            }
-            .explanation-heading::after {
-                content: '+';
-                position: absolute;
-                right: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
-                font-size: 1.5rem;
-                transition: transform var(--transition-speed) ease;
-            }
-            .explanation-heading.active::after {
-                content: '-';
-                transform: translateY(-50%);
-            }
-            @media (max-width: 600px) {
-                .explanation-heading {
-                    font-size: 1rem;
-                    padding: 0 0.5rem;
-                }
-                .explanation-btn {
-                    font-size: 0.95rem;
-                    min-width: 90px;
-                    padding: 0 0.7rem;
-                }
-            }
+        }
 
-            .explanation-title-row {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                margin-bottom: 0.5rem;
-            }
+        .explanation-title-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .explanation-title-row h2 {
+            margin: 0;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        @media (max-width: 600px) {
             .explanation-title-row h2 {
-                margin: 0;
-                font-size: 1.75rem;
-                font-weight: 600;
-                color: var(--text-light);
+                font-size: 1.2rem;
             }
-            @media (max-width: 600px) {
-                .explanation-title-row h2 {
-                    font-size: 1.2rem;
-                }
-                .explanation-title-row .explanation-btn {
-                    font-size: 0.95rem;
-                    min-width: 90px;
-                    padding: 0 0.7rem;
-                }
+            .explanation-title-row .explanation-btn {
+                font-size: 0.95rem;
+                min-width: 90px;
+                padding: 0 0.7rem;
             }
-        </style>
-    </head>
-    <body>
-        
-        <div class="loading">
-            <div class="loading-spinner"></div>
-        </div>
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="loading">
+        <div class="loading-spinner"></div>
+    </div>
 
-        <nav class="navbar">
-            <div class="logo-container">
-                <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo">
-                <div class="logo-title-group">
-                    <h1>FIB Majestic RP</h1>
-                    <div class="logo-by-connor">Не ценят меня...</div>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#legislation">Законодательная база</a></li>
-                <li><a href="#uk">Уголовный кодекс</a></li>
-                <li><a href="#rules">Основные правила</a></li>
-                <li><a href="#useful-links">Полезные ссылки</a></li>
-                <li><a href="#faq">Частые вопросы</a></li>
-                <li><a href="#postanovleniya">Постановления</a></li>
-            </ul>
-        </nav>
-        
-        <div class="container">
-            <section id="home">
-                <h2>Добро пожаловать в Федеральное Бюро Расследований</h2>
-                <p>Неофициальный сайт фракции FIB на проекте Majestic RP. Здесь вы найдете всю необходимую информацию для новичков и действующих сотрудников.</p>
-            </section>
-            
-            <section id="legislation">
-                <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo1"><h2>Законодательная база</h2>
-                
-                <div class="code-section">
-                    <h4>Уголовный кодекс</h4>
-                    <p>Основной закон, регулирующий уголовные преступления и наказания в штате Сан-Андреас.</p>
-                    
-                    <div class="article-item">
-                        <h4>Ссылка на уголовный кодекс</h4>
-                        <p><a href="https://forum.majestic-rp.ru/threads/ugolovnyi-kodeks-shtata-san-andreas.2247404/">Тык*</a></p>
-                    </div>
-                </div>
-                
-                <div class="code-section">
-                    <h4>Дорожный кодекс</h4>
-                    <p>Правила дорожного движения и нормы поведения на дорогах штата Сан-Андреас.</p>
-                    
-                    <div class="article-item">
-                        <h4>Ссылка на дорожный кодекс</h4>
-                        <p><a href="https://forum.majestic-rp.ru/threads/dorozhnyi-kodeks-shtata-san-andreas.2247397/">Тык*</a></p>
-                        <h3 onclick="toggleCollapse('common-articles-content')" class="important-button">Частые статьи:</h3>
-                        <div class="collapsible-content" id="common-articles-content">
-                            <p>Статья 1. (R) Водитель должен предъявить и передать по первому требованию сотрудника правоохранительных органов свою лицензию на управление транспортным средством с соответствующей категорией, а также документ удостоверяющий личность.​
-    Наказание: штраф до $5.000.​</p>
-                            <p>
-                                Статья 2.(R) Водитель обязан остановиться по требованию сотрудника правоохранительных органов и покинуть транспортное средство.​
-    Наказание: штраф до $5.000.​
-                            </p>
-                            <p>
-                            Статья 4.(R) При аварии, водитель обязан остановиться и не трогаться с места. Также водитель не должен трогать и перемещать предметы связанные с происшествием​
-    Наказание: штраф до $10.000.​
-                            </p>
-                            <p>
-                            Статья 37.(R) Остановка запрещается:
-                            </p>
-                            <p>а) параллельно красному бордюру;​
-    Исключение: Водители автобусов во время остановок.​</p>
-                            <p>б) на пешеходных переходах и тротуаре;​</p>
-                            <p>в) на ж/д переездах, трамвайных путях, мостах, в тоннелях;​</p>
-                            <p>г) на крутых и опасных поворотах;​</p>
-                            <p>д) на перекрестках;​</p>
-                            <p>е) на служебных стоянках государственных учреждений.​</p>
-                            <p>Исключение: Сотрудник государственной структуры на автомобиле с государственными номерами. К данным парковкам относятся парковки при государственных учреждений общего доступа (Передняя парковка LSPD, Передняя парковка Капитолия и т.д)​</p>
-                            <p>Наказание: штраф до $5.000 и эвакуация транспортного средства на штрафстоянку.​</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="code-section">
-                    <h4>Процессуальный кодекс</h4>
-                    <p>Порядок проведения следственных действий, судебных процессов и других юридических процедур.</p>
-                    
-                    <div class="article-item">
-                        <h4>Ссылка на процессуальный кодекс</h4>
-                        <p><a href="https://forum.majestic-rp.ru/threads/protsessual-nyi-kodeks-shtata-san-andreas.2190752/">Тык*</a></p>
-                        
-                        <h3 onclick="toggleCollapse('procedural-knowledge-content')" class="important-button">Нужно знать:</h3>
-                        <div class="collapsible-content" id="procedural-knowledge-content">
-                            <p>
-                                Статья 17. Порядок задержания правомочным лицом.​
-                            </p>
-                            <p>
-                                Статья 18. Субъекты задержания
-                            </p>
-                            <p>
-                                Статья 22. Права задерживаемого
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="code-section">
-                    <h4>Анти-Адвокат</h4>
-                    <p>Против Адвокатов.</p>
-                    
-                    <h3 onclick="toggleCollapse('lawyer-crime-content')" class="important-button">Состав преступления против адвокатов</h3>
-                    <div class="collapsible-content" id="lawyer-crime-content">
-                        <div class="crime-composition">
-                            <div class="composition-block">
-                                <div class="block-title">Объективные признаки</div>
-                                
-                                <div class="sub-block">
-                                    <div class="sub-block-title">Объект</div>
-                                    <div class="item">Общественные отношения</div>
-                                    <div class="item">Социальные ценности</div>
-                                    <div class="item required">Охраняемые законом интересы</div>
-                                </div>
-                                
-                                <div class="section-connector"></div>
-                                
-                                <div class="sub-block">
-                                    <div class="sub-block-title">Объективная сторона</div>
-                                    <div class="item required">Деяние (действие/бездействие)</div>
-                                    <div class="item">Общественно опасные последствия</div>
-                                    <div class="item">Причинная связь</div>
-                                    <div class="item">Время, место, способ</div>
-                                    <div class="item">Орудия и средства</div>
-                                </div>
-                            </div>
-                            
-                            <div class="plus-sign">+</div>
-                            
-                            <div class="composition-block">
-                                <div class="block-title">Субъективные признаки</div>
-                                
-                                <div class="sub-block">
-                                    <div class="sub-block-title">Субъект</div>
-                                    <div class="item required">Физическое лицо</div>
-                                    <div class="item required">Возраст</div>
-                                    <div class="item required">Вменяемость</div>
-                                    <div class="item">Специальный субъект</div>
-                                </div>
-                                
-                                <div class="section-connector"></div>
-                                
-                                <div class="sub-block">
-                                    <div class="sub-block-title">Субъективная сторона</div>
-                                    <div class="item required">Вина (умысел/неосторожность)</div>
-                                    <div class="item">Мотив (корысть, месть)</div>
-                                    <div class="item">Цель (воспрепятствование правосудию)</div>
-                                    <div class="item">Эмоциональное состояние</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="explanation">
-                            <p><strong>Объективные признаки</strong> - внешняя характеристика преступления, то, что можно наблюдать и фиксировать:</p>
-                            <ul>
-                                <li><strong>Объект</strong> - то, на что направлено преступное посягательство (охраняемые законом интересы правосудия).</li>
-                                <li><strong>Объективная сторона</strong> - внешнее проявление преступления, включая деяние (обязательный признак), последствия и связь между ними.</li>
-                            </ul>
-                            
-                            <p><strong>Субъективные признаки</strong> - внутренняя характеристика преступления, связанная с лицом, его совершившим:</p>
-                            <ul>
-                                <li><strong>Субъект</strong> - лицо, совершившее преступление (обязательные признаки - возраст и вменяемость).</li>
-                                <li><strong>Субъективная сторона</strong> - психическое отношение лица к содеянному (обязательный признак - вина).</li>
-                            </ul>
-                            
-                            <p>Красным цветом выделены <strong>обязательные признаки</strong> состава преступления. Без любого из них состав преступления отсутствует.</p>
-                            <p><strong>Примечание:</strong> Для преступлений против правосудия (в т.ч. действий адвокатов) часто требуется специальный субъект - лицо, использующее свои профессиональные полномочия.</p>
-                        </div>
-                        
-                        <h3 onclick="toggleCollapse('guilt-forms-content')" class="important-button">Формы вины</h3>
-                        <div class="collapsible-content" id="guilt-forms-content">
-                            <div class="composition-section">
-                                <div class="crime-composition">
-                                    <div class="composition-block">
-                                        <div class="block-title">1. Умысел</div>
-                                        
-                                        <div class="sub-block">
-                                            <div class="sub-block-title">Прямой умысел:</div>
-                                            <div class="item">Осознавал противоправность деяния</div>
-                                            <div class="item">Предвидел наступление общественно вредных последствий</div>
-                                            <div class="item">Желал наступления этих последствий</div>
-                                        </div>
-                                        
-                                        <div class="section-connector"></div>
-                                        
-                                        <div class="sub-block">
-                                            <div class="sub-block-title">Косвенный умысел:</div>
-                                            <div class="item">Осознавал противоправность деяния</div>
-                                            <div class="item">Предвидел наступление общественно вредных последствий</div>
-                                            <div class="item">Не желал, но сознательно допускал наступление этих последствий</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="plus-sign">+</div>
-                                    
-                                    <div class="composition-block">
-                                        <div class="block-title">2. Неосторожность</div>
-                                        
-                                        <div class="sub-block">
-                                            <div class="sub-block-title">Легкомыслие:</div>
-                                            <div class="item">Осознавал противоправность деяния</div>
-                                            <div class="item">Предвидел наступление общественно опасного вреда</div>
-                                            <div class="item">Легкомысленно рассчитывал на предотвращение последствий</div>
-                                        </div>
-                                        
-                                        <div class="section-connector"></div>
-                                        
-                                        <div class="sub-block">
-                                            <div class="sub-block-title">Небрежность:</div>
-                                            <div class="item">Не осознавал противоправности деяния</div>
-                                            <div class="item">Не предвидел наступления общественно опасного вреда</div>
-                                            <div class="item">Но мог и должен был предвидеть</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="uk">
-                <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo1">
-                <h2>Уголовный кодекс</h2>
-                
-                <div class="uk-section">
-                    <h3 onclick="toggleCollapse('uk-table-content')">Интерактивная таблица Уголовного кодекса</h3>
-                    <div class="collapsible-content" id="uk-table-content">
-                        <p>Для удобного просмотра таблицы используйте кнопку "Полноэкранный режим" ниже.</p>
-                        <button class="uk-fullscreen-btn" id="fullscreen-btn">Полноэкранный режим</button>
-                    </div>
-                </div>
-            </section>
-            <section id="protected-territories">
-        <div class="explanation-title-row">
-            <h2>Закон о закрытых или особо охраняемых территориях</h2>
-            <button id="explanation-btn" class="explanation-btn" type="button">
-                <span class="warning-emoji" role="img" aria-label="warning">⚠️</span> Пояснение
-            </button>
-        </div>
-        <div class="explanation-row">
-            <h3 class="explanation-heading" onclick="toggleCollapse('categories-content')">Статья 1. Категории охраняемых территорий | Статья 2. Особо охраняемыме объекты | Статья 5. Визуализация территорий определена изображениями: ​</h3>
-        </div>
-        <div id="explanation-modal" class="explanation-modal" style="display: none;">
-            <div class="explanation-modal-content">
-                <div class="explanation-modal-header">
-                    <span class="warning-emoji" role="img" aria-label="warning">⚠️</span>
-                    <h2>Пояснение</h2>
-                </div>
-                <div class="explanation-modal-body">
-                    <p>Внимание! Вы как сотрудник FIB не можите находится без оснований на територий : Los Santos Police Department ; Sheriff Department Capitol of state of san andreas ; San Andreas National Guard. </p>
-                </div>
-                <button class="explanation-modal-close" id="explanation-modal-close">Закрыть</button>
+    <nav class="navbar">
+        <div class="logo-container">
+            <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo">
+            <div class="logo-title-group">
+                <h1>FIB Majestic RP</h1>
             </div>
         </div>
-        <div class="collapsible-content" id="categories-content">
-            <div class="rule-content">
-                <p>Охраняемыми объектами являются следующие:</p>
-                <ul>
-                    <li>- ВПП, ангары аэропорта и прилегающие территории</li>
-                    <li>- Дополнительные объекты, указанные в нормативно-правовых актах</li>
-                    <li>- Капитолий Штата Сан-Андреас, кроме территории холла</li>
-                    <li>- Участки Los Santos Police Department и Sheriff Department и служебные парковки, кроме территории холла</li>
-                    <li>- Территория острова Кайо-Перико, воды на 1 милю от берега острова Кайо-Перико</li>
-                    <li>- Здания медицинских учреждений, здание Weazel News.</li>
-                    <li>- Авианосец, воды на 1 милю от авианосца</li>
-                    <li>- Здание Суда</li>
-                </ul>
-                <p>Статья 2. Особо охраняемыми объектами являются следующие: </p>
-                <ul>
-                    <li>- Форт Занкудо. ​</li>
-                    <li>-Офис FIB. ​</li>
-                </ul>
-                <p>Статья 5. Визуализация территорий определена изображениями: ​:</p>
-                <ul>
-                    <li>- Белым цветом выделяются прилегающие территории к государственным объектам.​</li>
-                    <li>- Желтым и черным цветом выделяются территории охраняемых объектов. ​</li>
-                    <li>- Красным цветом выделяются территории особо охраняемых объектов.​</li>
-                </ul>
-                
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#legislation">Законодательная база</a></li>
+            <li><a href="#uk">Уголовный кодекс</a></li>
+            <li><a href="#rules">Основные правила</a></li>
+            <li><a href="#useful-links">Полезные ссылки</a></li>
+            <li><a href="#faq">Частые вопросы</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="home">
+            <h2>Добро пожаловать в Федеральное Бюро Расследований</h2>
+            <p>Неофициальный сайт фракции FIB на проекте Majestic RP. Здесь вы найдете всю необходимую информацию для новичков и действующих сотрудников.</p>
+
+            <div class="useful-links" style="margin-top:0;">
+                <div class="link-card">
+                    <h4>Заявление на стажировку</h4>
+                    <p>Оставьте заявку на стажировку в FIB. После подачи ожидайте обратной связи от руководства.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLpp4RrcEBkkb_MSsJJ_EXnRVlBrTEY9ScJ5VNscFbN4furA/viewform" target="_blank">Перейти</a>
+                </div>
+                <div class="link-card">
+                    <h4>Заявление на восстановление</h4>
+                    <p>Заполните заявление на восстановление. После подачи заявки ожидайте рассмотрения и решения по вашему вопросу.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffiZ1Qp1ZGVC_A2HhPibPSKnm7WuJTQ-FRScRDXeMl1UNi9Q/viewform" target="_blank">Перейти</a>
+                </div>
+                <div class="link-card">
+                    <h4>Заявление на перевод</h4>
+                    <p>Подайте заявление на перевод в другую фракцию. Следите за статусом заявки в соответствующем канале Discord.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeisQ3BkrVLxSrH1N4ZwPH-pdyoQ-91jLjCSTlLxXRtpDCpWw/viewform" target="_blank">Перейти</a>
+                </div>
             </div>
-        </div>
+        </section>
         
-        <h3 onclick="toggleCollapse('regime-content')">Режим охраняемых территорий LSPD</h3>
-        <div class="collapsible-content" id="regime-content">
-                <h4>LSPD</h4>
-                <div class="image-container">
-                    <img src="https://i.ibb.co/G2mmf1p/image-1.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/8DxK06K/lspd-5.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/KrHFMcy/lspdd.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/nRLYD5Y/lspd-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/vdvr2bt/lspd-4.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/pwhBxJn/lspd-8.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/5BybC5c/lspd-1.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/pQPNqtx/lspd-9.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                </div>
-        </div>
-        
-        <h3 onclick="toggleCollapse('responsibility-content')">Режим охраняемых территорий LSSD</h3>
-        <div class="collapsible-content" id="responsibility-content">
-                <h4>LSSD(SANDY)</h4>
-                <div class="image-container">
-                    <img src="https://i.ibb.co/2jm4Tkt/sendic-5.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.imgur.com/IiKXoBG.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/PrYnhx5/sendic-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                <h4>LSSD(PALETO)</h4>
-                    <img src="https://i.ibb.co/YQZhtP3/paleto-lscsd-5.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/x1SbvM0/paleto-lscsd-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/MDQkDjM/paleto-lscsd-2.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/gj9kmSV/paleto-lscsd-1.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                </div>
-        </div>
-
-            <h3 onclick="toggleCollapse('responsibility-content1')">Режим охраняемых территорий GOV</h3>
-        <div class="collapsible-content" id="responsibility-content1">
-                <h4>GOV</h4>
-                <div class="image-container">
-                    <img src="https://i.ibb.co/ZMkK7Fz/gov-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/XsKBxNB/gov-2.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/7QBQ69C/gov-1.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                </div>
-        </div>
-        
-        <h3 onclick="toggleCollapse('authority-content')">Режим охраняемых территорий FIB</h3>
-        <div class="collapsible-content" id="authority-content">
-                <h4>FIB</h4>
-                <div class="image-container">
-                    <img src="https://i.ibb.co/S3ZDxv1/fib-4.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/P4QpmjR/fib-3.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                </div>
-        </div>
-            <h3 onclick="toggleCollapse('authority-content2')">Режим охраняемых территорий SANG</h3>
-        <div class="collapsible-content" id="authority-content2">
-                <h4>SANG</h4>
-                <div class="image-container">
-                    <img src="https://i.ibb.co/Y3BJFJw/sang-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/X7ySmdL/sangg2.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/jzLNrC1/4.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                    <img src="https://i.ibb.co/5RQ1zZj/sang-1.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
-                </div>
-        </div>
-    </section>
+        <section id="legislation">
+            <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo1"><h2>Законодательная база</h2>
             
-            <section id="rules">
-                <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo1">
-                <h2>Основные правила проекта</h2>
+            <div class="code-section">
+                <h4>Уголовный кодекс</h4>
+                <p>Основной закон, регулирующий уголовные преступления и наказания в штате Сан-Андреас.</p>
                 
-                <h3 onclick="toggleCollapse('air-drop-content')">Война за Air Drop</h3>
-                <div class="collapsible-content" id="air-drop-content">
-                    <div class="rule-content">
-                        <p><a href="https://forum.majestic-rp.ru/threads/pravila-voiny-za-airdrop.210836/">Тык*</a></p>
-                        <p>1. Запрещено DB. | Ban 3-10 дней / HardBan 7-30 дней.</p>
-                        <p>2. На территории ВЗА запрещено вождение любого транспорта. | Demorgan 30-60 минут.</p>
-                        <p>3. Участники, которые находятся вне зоны ВЗА, обязаны стремиться попасть к AirDrop'у, не задерживаясь на нейтральной территории. | Demorgan 45-90 минут.</p>
-                        <p>4. Запрещено использование heavy sniper, heavy sniper mk2 ,Marksman rifle MK2, тазера, наручников, стяжек, веревок и дронов, ношение тепловизоров. | Demorgan 90 минут / Ban / HardBan 3-5 дней + изъятие предмета.</p>
-                        <p>5. Запрещено покидать игру во время ВЗА. | WARN / HardBan 2-4 дня.</p>
-                        <p>6. Запрещено использование анимаций. | Demorgan 35-90 минут / WARN.
-    Исключение: функциональное использование "ползать", "присесть"..</p>
-                        <p>7. Запрещено перехватывать / намеренно удерживать вражескую матовозку. | Demorgan 60-100 минут + изъятие полученного.</p>
-                        <p>8. Государственные силовые структуры могут принимать участие в ВЗА, которое происходит в: 00:00, 04:00, 08:00, 12:00. | Demorgan 45 минут.
-    Примечание: все полученные предметы сотрудники государственных организаций обязаны положить на склад, в случае отсутствия данного действия, оно будет расцениваться как слив склада.
-                    </p>
-                    <p>
-                        9. Окончанием ВЗА считается нахождение 1 фракции / семьи на территории (в конце мероприятия).
-    Пояснение: территорией ВЗА считается как функциональная, так и прилегающая к ней зона.
-                    </p>
-                    </div>
+                <div class="article-item">
+                    <h4>Ссылка на уголовный кодекс</h4>
+                    <p><a href="https://forum.majestic-rp.ru/threads/ugolovnyi-kodeks-shtata-san-andreas.2247404/">Тык*</a></p>
                 </div>
+            </div>
+            
+            <div class="code-section">
+                <h4>Дорожный кодекс</h4>
+                <p>Правила дорожного движения и нормы поведения на дорогах штата Сан-Андреас.</p>
                 
-                <h3 onclick="toggleCollapse('supply-intercept-content')">Правила перехвата поставок</h3>
-                <div class="collapsible-content" id="supply-intercept-content">
-                    <div class="rule-content">
-                        <p><a href="https://forum.majestic-rp.ru/threads/pravila-perekhvata-postavok.123972/">Тык*</a></p>
-                        <p>1. Поставка - любое передвижение матовозки, в т.ч. транспортировка / разгрузка / загрузка материалов / созданных предметов из данных материалов, а так же закупаемых предметов, с целью их дальнейшей реализации, переработки и/или продажи.</p>
-
+                <div class="article-item">
+                    <h4>Ссылка на дорожный кодекс</h4>
+                    <p><a href="https://forum.majestic-rp.ru/threads/dorozhnyi-kodeks-shtata-san-andreas.2247397/">Тык*</a></p>
+                    <h3 onclick="toggleCollapse('common-articles-content')" class="important-button">Частые статьи:</h3>
+                    <div class="collapsible-content" id="common-articles-content">
+                        <p>Статья 1. (R) Водитель должен предъявить и передать по первому требованию сотрудника правоохранительных органов свою лицензию на управление транспортным средством с соответствующей категорией, а также документ удостоверяющий личность.​
+Наказание: штраф до $5.000.​</p>
                         <p>
-    2. Минимальное количество участников со стороны гос. фракций - 8 человек. | Demorgan 45 минут / Устный выговор лидерам.
-    Примечание: включая SANG.</p>
-                        <p>3. 1.2. Максимальное количество участников со стороны гос. фракций - 40 человек. | Demorgan 45 минут / Устный выговор лидерам.
-    Примечание: включая SANG.
-    Исключение: окончательное кол-во участников со стороны государственных структур определяется ГА сервера.</p>
-                        <p>4. 3. Запрещено вызывать подкрепление во время нападения на поставку. | Demorgan 60 минут / Устный выговор лидерам. </p>
-                        <p>Исключение: повторное нападение на поставку.</p>
-                        <p>Примечание: вмешательство третьей стороны в ходе одной перестрелки считается повторным нападением. </p>
+                            Статья 2.(R) Водитель обязан остановиться по требованию сотрудника правоохранительных органов и покинуть транспортное средство.​
+Наказание: штраф до $5.000.​
+                        </p>
+                        <p>
+                        Статья 4.(R) При аварии, водитель обязан остановиться и не трогаться с места. Также водитель не должен трогать и перемещать предметы связанные с происшествием​
+Наказание: штраф до $10.000.​
+                        </p>
+                        <p>
+                        Статья 37.(R) Остановка запрещается:
+                        </p>
+                        <p>а) параллельно красному бордюру;​
+Исключение: Водители автобусов во время остановок.​</p>
+                        <p>б) на пешеходных переходах и тротуаре;​</p>
+                        <p>в) на ж/д переездах, трамвайных путях, мостах, в тоннелях;​</p>
+                        <p>г) на крутых и опасных поворотах;​</p>
+                        <p>д) на перекрестках;​</p>
+                        <p>е) на служебных стоянках государственных учреждений.​</p>
+                        <p>Исключение: Сотрудник государственной структуры на автомобиле с государственными номерами. К данным парковкам относятся парковки при государственных учреждений общего доступа (Передняя парковка LSPD, Передняя парковка Капитолия и т.д)​</p>
+                        <p>Наказание: штраф до $5.000 и эвакуация транспортного средства на штрафстоянку.​</p>
                     </div>
                 </div>
-
-                <h3 onclick="toggleCollapse('interopll')">Правила захвата цехов / дилеров</h3>
-                <div class="collapsible-content" id="interopll">
-                    <div class="rule-content">
-                        <p><a href="https://forum.majestic-rp.ru/threads/pravila-zakhvata-tsekhov-dilerov.1823529/">Тык*</a></p>
-                        <p>2. На мероприятиях действуют все правила сервера.
-    Исключение: DM (разрешено убийство лишь причастных к мероприятию), PG, nonRP drive для матовозки, NLR.</p>
-                        <p>3. Запрещено DB. | Ban 3-10 дней / HardBan 7-30 дней.</p>
-                        <p>5. На территории мероприятия запрещена высадка на любые здания, строения, объекты на летной техники. | Demorgan 100 минут.
-    Исключение: конец мероприятия. </p>
-                        <p>4. Запрещено использование анимаций. | Demorgan 35-90 минут / WARN.
-    Исключение: функциональное использование "ползать", "присесть".</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="useful-links">
-                <h2>Полезные ссылки</h2>
-                
-                <div class="useful-links">
-                    <div class="link-card">
-                        <h4>Официальный форум</h4>
-                        <p>Форум проекта Majestic RP с актуальными новостями, обсуждениями и правилами</p>
-                        <a href="https://forum.majestic-rp.ru/" target="_blank">Перейти</a>
-                    </div>
-                    
-                    <div class="link-card">
-                        <h4>FIB Перевод.</h4>
-                        <p>Форма для перевода в другие фракции.</p>
-                        <p>Отслеживать вашу заявку в канале #перевод</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeisQ3BkrVLxSrH1N4ZwPH-pdyoQ-91jLjCSTlLxXRtpDCpWw/viewform?usp=dialog" target="_blank">Заполнить</a>
-                    </div>
-                    
-                    <div class="link-card">
-                        <h4>Discord сервер FIB Рапорт на Увал.</h4>
-                        <p>Официальный Discord сервер фракции FIB для того, чтобы написать Рапорт на Увал.</p>
-                        <p>Отслеживать вашу заявку в канале #рапорт-на-увольнение.</p>
-                        <a href="https://discord.com/channels/1382607727507017739/1382607728702394375/1383931400226340905" target="_blank">Заполнить</a>
-                    </div>
-                    
-                    <div class="link-card">
-                        <h4>FIB Запрос спецухи.</h4>
-                        <p>Запрос дефиков/дронов в FIB</p>
-                        <p>Отслеживать вашу заявку в канале #запрос-спец-вооружения.</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBNDrUJKbXqoA-pzm_y2DbFMrpTDih5aiXZDjxFx_3zI7WFw/viewform?usp=dialog" target="_blank">Подробнее</a>
-                    </div>
-                    
-                    <div class="link-card">
-                        <h4>Запрос на Отпуск</h4>
-                        <p>Запрос на АФК</p>
-                        <a href="https://discord.com/channels/1382607727507017739/1383499354806947940" target="_blank">Заполнить</a>
-                    </div>
-
-                    <div class="link-card">
-                        <h4>Зарос на восстановление</h4>
-                        <p>Отслеживать ваш запрос на восстановление в канале #восстановление</p>
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSffiZ1Qp1ZGVC_A2HhPibPSKnm7WuJTQ-FRScRDXeMl1UNi9Q/viewform" target="_blank">Заполнить</a>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="faq">
-                <h2>Частые вопросы</h2>
-                
-                <h3 onclick="toggleCollapse('promotion-content')">Как повышаться?</h3>
-                <div class="collapsible-content" id="promotion-content">
-                    <div class="faq-item">
-                        <p>В Discord сервере есть канал #система-повышений, где подробно описаны все требования для каждого звания.</p>
-                        <p>Для повышения нужно набрать количество баллов и закинуть отчет в канал #отчет-на-повышение.</p>
-                        <a href="https://imgur.com/a/Rq9I2YH">Ссылка на гайд</a>
-                    </div>
-                </div>
-
-                <h3 onclick="toggleCollapse('report-rejected-content')">Что делать если отклонили отчет?</h3>
-                <div class="collapsible-content" id="report-rejected-content">
-                    <div class="faq-item">
-                        <p>1. Имя/Фамилия/Статик либо не указан, либо указан неверно.</p>
-                        <p>2. Если вы повышаетесь за баллы из канала #благодарность, вы должны предоставить подтверждение того, что действительно были на мероприятии.</p>                   
-                    </div>
-                </div>
-
-                <h3 onclick="toggleCollapse('cid-content')">Как попасть в отдел CID?</h3>
-                <div class="collapsible-content" id="cid-content">
-                    <div class="faq-item">
-                        <p>Заявки в отдел CID работают, но приходят в другой Discord для секретности.</p>
-                        <p>Примечание: Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                
-                    </div>
-                </div>
-
-                <h3 onclick="toggleCollapse('fa-content')">Как попасть в отдел FA?</h3>
-                <div class="collapsible-content" id="fa-content">
-                    <div class="faq-item">
-                        <p>Нужно знать правила ПОЙП и правила терактов, вот ссылка <a href="https://forum.majestic-rp.ru/threads/pravila-ograblenii-i-pokhishchenii.8254/">Тык*</a> (Если кто-то ещё не понял — заявку тоже обязательно нужно оставить.)</p>
-                        <p>Примечание: Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                           
-                    </div>
-                </div>
-
-                <h3 onclick="toggleCollapse('points-content')">Будут ли Баллы?</h3>
-                <div class="collapsible-content" id="points-content">
-                    <div class="faq-item">
-                        <p>Да, после каждого сбора будут выписаны баллы, и их количество зависит только от вас.</p>
-                        <p>Примечание: Не нужно писать в личные сообщения хайранам с просьбой рассмотреть вашу заявку или дать баллы.</p>                           
-                    </div>
-                </div>
-
-                <h3 onclick="toggleCollapse('special-content')">Когда выдадут спецуху?</h3>
-                <div class="collapsible-content" id="special-content">
-                    <div class="faq-item">
-                        <p>После того как вам одобрят заявку, storekeeper всех тегнет, когда будет выдача.</p>
-                        <p>Примечание: После того как вы получите спецуху, оставьте отчет здесь: <a href="https://discord.com/channels/1382607727507017739/1382607729142530111">Тык*</a>.</p>                           
-                    </div>
-                </div>
-
-                <h3 onclick="toggleCollapse('warehouse-content')">Почему склад с 6-7 ранга?</h3>
-                <div class="collapsible-content" id="warehouse-content">
-                    <div class="faq-item">
-                        <p>Людей много, и не всегда есть возможность прокормить всех.</p>                       
-                    </div>
-                </div>
-            </section>
-
-            <section id="postanovleniya">
-                <h2>Постановления /Work in Finished but not approved</h2>
-                
-                <div class="postanovleniya-container">
-
-                    <div class="admin-panel" id="adminPanel" style="display: none;">
-                        <div class="admin-header">
-                            <h3>Панель администратора</h3>
-                            <button class="logout-btn" onclick="logout()">Выйти</button>
-                        </div>
-                        <form id="postForm" class="post-form">
-                            <div class="form-group">
-                                <label for="postTitle">Заголовок:</label>
-                                <input type="text" id="postTitle" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="postDescription">Описание:</label>
-                                <textarea id="postDescription" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="postImage">Фотография:</label>
-                                <input type="file" id="postImage" accept="image/*">
-                            </div>
-                            <button type="submit" class="submit-btn">Опубликовать</button>
-                        </form>
-                    </div>
-
-
-                    <div class="admin-login" id="adminLogin">
-                        <h3>Вход для администратора</h3>
-                        <form id="loginForm" class="login-form">
-                            <div class="form-group">
-                                <label for="adminPassword">Пароль:</label>
-                                <input type="password" id="adminPassword" required>
-                            </div>
-                            <button type="submit" class="login-btn">Войти</button>
-                        </form>
-                    </div>
-
-                    <div class="published-posts" id="publishedPosts">
-                        <h3>Опубликованные постановления</h3>
-                        <div id="postsList" class="posts-list">
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        
-        <div id="fullscreen-container" class="uk-fullscreen" style="display: none;">
-            <div class="uk-fullscreen-header">
-                <h3>Уголовный кодекс - Полноэкранный режим</h3>
-                <button class="uk-fullscreen-close" id="fullscreen-close">Закрыть (Esc)</button>
             </div>
-            <iframe class="uk-fullscreen-iframe" src="https://docs.google.com/spreadsheets/d/1HrPv_uVavBCcfQKVmA7F56NeymB2ql6xBzUmLAEfNwQ/edit?gid=1714153627#gid=1714153627"></iframe>
-        </div>
-        
-        <footer>
-            <p>Done by <a class="Red" href="https://discord.gg/yb2e3BHrcD">Majestic Empire</a> To Majestic RP Phoenix/FIB</p>
-            <p>Контакты: Discord: colepatkins</p>
-            <p>Никакие права не защищены. Несанкционированное копирование материалов разрешено.</p>
-        </footer>
-
-        <script>
-            function toggleCollapse(id) {
-                const content = document.getElementById(id);
-                const header = content.previousElementSibling;
-                
-                event.preventDefault();
-                event.stopPropagation();
-                
-                content.classList.toggle('active');
-                header.classList.toggle('active');
-            }
             
-            document.addEventListener('DOMContentLoaded', function() {
-                const fullscreenBtn = document.getElementById('fullscreen-btn');
-                const fullscreenClose = document.getElementById('fullscreen-close');
-                const fullscreenContainer = document.getElementById('fullscreen-container');
+            <div class="code-section">
+                <h4>Процессуальный кодекс</h4>
+                <p>Порядок проведения следственных действий, судебных процессов и других юридических процедур.</p>
                 
-                fullscreenBtn.addEventListener('click', function() {
-                    fullscreenContainer.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                });
+                <div class="article-item">
+                    <h4>Ссылка на процессуальный кодекс</h4>
+                    <p><a href="https://forum.majestic-rp.ru/threads/protsessual-nyi-kodeks-shtata-san-andreas.2190752/">Тык*</a></p>
+                    
+                    <h3 onclick="toggleCollapse('procedural-knowledge-content')" class="important-button">Нужно знать:</h3>
+                    <div class="collapsible-content" id="procedural-knowledge-content">
+                        <p>
+                            Статья 17. Порядок задержания правомочным лицом.​
+                        </p>
+                        <p>
+                            Статья 18. Субъекты задержания
+                        </p>
+                        <p>
+                            Статья 22. Права задерживаемого
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="code-section">
+                <h4>Анти-Адвокат</h4>
+                <p>Против Адвокатов.</p>
                 
-                fullscreenClose.addEventListener('click', function() {
+                <h3 onclick="toggleCollapse('lawyer-crime-content')" class="important-button">Состав преступления против адвокатов</h3>
+                <div class="collapsible-content" id="lawyer-crime-content">
+                    <div class="crime-composition">
+                        <div class="composition-block">
+                            <div class="block-title">Объективные признаки</div>
+                            
+                            <div class="sub-block">
+                                <div class="sub-block-title">Объект</div>
+                                <div class="item">Общественные отношения</div>
+                                <div class="item">Социальные ценности</div>
+                                <div class="item required">Охраняемые законом интересы</div>
+                            </div>
+                            
+                            <div class="section-connector"></div>
+                            
+                            <div class="sub-block">
+                                <div class="sub-block-title">Объективная сторона</div>
+                                <div class="item required">Деяние (действие/бездействие)</div>
+                                <div class="item">Общественно опасные последствия</div>
+                                <div class="item">Причинная связь</div>
+                                <div class="item">Время, место, способ</div>
+                                <div class="item">Орудия и средства</div>
+                            </div>
+                        </div>
+                        
+                        <div class="plus-sign">+</div>
+                        
+                        <div class="composition-block">
+                            <div class="block-title">Субъективные признаки</div>
+                            
+                            <div class="sub-block">
+                                <div class="sub-block-title">Субъект</div>
+                                <div class="item required">Физическое лицо</div>
+                                <div class="item required">Возраст</div>
+                                <div class="item required">Вменяемость</div>
+                                <div class="item">Специальный субъект</div>
+                            </div>
+                            
+                            <div class="section-connector"></div>
+                            
+                            <div class="sub-block">
+                                <div class="sub-block-title">Субъективная сторона</div>
+                                <div class="item required">Вина (умысел/неосторожность)</div>
+                                <div class="item">Мотив (корысть, месть)</div>
+                                <div class="item">Цель (воспрепятствование правосудию)</div>
+                                <div class="item">Эмоциональное состояние</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="explanation">
+                        <p><strong>Объективные признаки</strong> - внешняя характеристика преступления, то, что можно наблюдать и фиксировать:</p>
+                        <ul>
+                            <li><strong>Объект</strong> - то, на что направлено преступное посягательство (охраняемые законом интересы правосудия).</li>
+                            <li><strong>Объективная сторона</strong> - внешнее проявление преступления, включая деяние (обязательный признак), последствия и связь между ними.</li>
+                        </ul>
+                        
+                        <p><strong>Субъективные признаки</strong> - внутренняя характеристика преступления, связанная с лицом, его совершившим:</p>
+                        <ul>
+                            <li><strong>Субъект</strong> - лицо, совершившее преступление (обязательные признаки - возраст и вменяемость).</li>
+                            <li><strong>Субъективная сторона</strong> - психическое отношение лица к содеянному (обязательный признак - вина).</li>
+                        </ul>
+                        
+                        <p>Красным цветом выделены <strong>обязательные признаки</strong> состава преступления. Без любого из них состав преступления отсутствует.</p>
+                        <p><strong>Примечание:</strong> Для преступлений против правосудия (в т.ч. действий адвокатов) часто требуется специальный субъект - лицо, использующее свои профессиональные полномочия.</p>
+                    </div>
+                    
+                    <h3 onclick="toggleCollapse('guilt-forms-content')" class="important-button">Формы вины</h3>
+                    <div class="collapsible-content" id="guilt-forms-content">
+                        <div class="composition-section">
+                            <div class="crime-composition">
+                                <div class="composition-block">
+                                    <div class="block-title">1. Умысел</div>
+                                    
+                                    <div class="sub-block">
+                                        <div class="sub-block-title">Прямой умысел:</div>
+                                        <div class="item">Осознавал противоправность деяния</div>
+                                        <div class="item">Предвидел наступление общественно вредных последствий</div>
+                                        <div class="item">Желал наступления этих последствий</div>
+                                    </div>
+                                    
+                                    <div class="section-connector"></div>
+                                    
+                                    <div class="sub-block">
+                                        <div class="sub-block-title">Косвенный умысел:</div>
+                                        <div class="item">Осознавал противоправность деяния</div>
+                                        <div class="item">Предвидел наступление общественно вредных последствий</div>
+                                        <div class="item">Не желал, но сознательно допускал наступление этих последствий</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="plus-sign">+</div>
+                                
+                                <div class="composition-block">
+                                    <div class="block-title">2. Неосторожность</div>
+                                    
+                                    <div class="sub-block">
+                                        <div class="sub-block-title">Легкомыслие:</div>
+                                        <div class="item">Осознавал противоправность деяния</div>
+                                        <div class="item">Предвидел наступление общественно опасного вреда</div>
+                                        <div class="item">Легкомысленно рассчитывал на предотвращение последствий</div>
+                                    </div>
+                                    
+                                    <div class="section-connector"></div>
+                                    
+                                    <div class="sub-block">
+                                        <div class="sub-block-title">Небрежность:</div>
+                                        <div class="item">Не осознавал противоправности деяния</div>
+                                        <div class="item">Не предвидел наступления общественно опасного вреда</div>
+                                        <div class="item">Но мог и должен был предвидеть</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="uk">
+            <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo1">
+            <h2>Уголовный кодекс</h2>
+            
+            <div class="uk-section">
+                <h3 onclick="toggleCollapse('uk-table-content')">Интерактивная таблица Уголовного кодекса</h3>
+                <div class="collapsible-content" id="uk-table-content">
+                    <p>Для удобного просмотра таблицы используйте кнопку "Полноэкранный режим" ниже.</p>
+                    <button class="uk-fullscreen-btn" id="fullscreen-btn">Полноэкранный режим</button>
+                </div>
+            </div>
+        </section>
+        <section id="protected-territories">
+    <div class="explanation-title-row">
+        <h2>Закон о закрытых или особо охраняемых территориях</h2>
+        <button id="explanation-btn" class="explanation-btn" type="button">
+            <span class="warning-emoji" role="img" aria-label="warning">⚠️</span> Пояснение
+        </button>
+    </div>
+    <div class="explanation-row">
+        <h3 class="explanation-heading" onclick="toggleCollapse('categories-content')">Статья 1. Категории охраняемых территорий | Статья 2. Особо охраняемыме объекты | Статья 5. Визуализация территорий определена изображениями: ​</h3>
+    </div>
+    <div id="explanation-modal" class="explanation-modal" style="display: none;">
+        <div class="explanation-modal-content">
+            <div class="explanation-modal-header">
+                <span class="warning-emoji" role="img" aria-label="warning">⚠️</span>
+                <h2>Пояснение</h2>
+            </div>
+            <div class="explanation-modal-body">
+                <p>Внимание! Вы как сотрудник FIB не можите находится без оснований на територий : Los Santos Police Department ; Sheriff Department Capitol of state of san andreas ; San Andreas National Guard. </p>
+            </div>
+            <button class="explanation-modal-close" id="explanation-modal-close">Закрыть</button>
+        </div>
+    </div>
+    <div class="collapsible-content" id="categories-content">
+        <div class="rule-content">
+            <p>Охраняемыми объектами являются следующие:</p>
+            <ul>
+                <li>- ВПП, ангары аэропорта и прилегающие территории</li>
+                <li>- Дополнительные объекты, указанные в нормативно-правовых актах</li>
+                <li>- Капитолий Штата Сан-Андреас, кроме территории холла</li>
+                <li>- Участки Los Santos Police Department и Sheriff Department и служебные парковки, кроме территории холла</li>
+                <li>- Территория острова Кайо-Перико, воды на 1 милю от берега острова Кайо-Перико</li>
+                <li>- Здания медицинских учреждений, здание Weazel News.</li>
+                <li>- Авианосец, воды на 1 милю от авианосца</li>
+                <li>- Здание Суда</li>
+            </ul>
+            <p>Статья 2. Особо охраняемыми объектами являются следующие: </p>
+            <ul>
+                <li>- Форт Занкудо. ​</li>
+                <li>-Офис FIB. ​</li>
+            </ul>
+            <p>Статья 5. Визуализация территорий определена изображениями: ​:</p>
+            <ul>
+                <li>- Белым цветом выделяются прилегающие территории к государственным объектам.​</li>
+                <li>- Желтым и черным цветом выделяются территории охраняемых объектов. ​</li>
+                <li>- Красным цветом выделяются территории особо охраняемых объектов.​</li>
+            </ul>
+            
+        </div>
+    </div>
+    
+    <h3 onclick="toggleCollapse('regime-content')">Режим охраняемых территорий LSPD</h3>
+    <div class="collapsible-content" id="regime-content">
+            <h4>LSPD</h4>
+            <div class="image-container">
+                <img src="https://i.ibb.co/G2mmf1p/image-1.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/8DxK06K/lspd-5.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/KrHFMcy/lspdd.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/nRLYD5Y/lspd-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/vdvr2bt/lspd-4.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/pwhBxJn/lspd-8.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/5BybC5c/lspd-1.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/pQPNqtx/lspd-9.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+            </div>
+    </div>
+    
+    <h3 onclick="toggleCollapse('responsibility-content')">Режим охраняемых территорий LSSD</h3>
+    <div class="collapsible-content" id="responsibility-content">
+            <h4>LSSD(SANDY)</h4>
+            <div class="image-container">
+                <img src="https://i.ibb.co/2jm4Tkt/sendic-5.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.imgur.com/IiKXoBG.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/PrYnhx5/sendic-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+            <h4>LSSD(PALETO)</h4>
+                <img src="https://i.ibb.co/YQZhtP3/paleto-lscsd-5.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/x1SbvM0/paleto-lscsd-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/MDQkDjM/paleto-lscsd-2.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/gj9kmSV/paleto-lscsd-1.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+            </div>
+    </div>
+
+        <h3 onclick="toggleCollapse('responsibility-content1')">Режим охраняемых территорий GOV</h3>
+    <div class="collapsible-content" id="responsibility-content1">
+            <h4>GOV</h4>
+            <div class="image-container">
+                <img src="https://i.ibb.co/ZMkK7Fz/gov-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/XsKBxNB/gov-2.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/7QBQ69C/gov-1.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+            </div>
+    </div>
+    
+    <h3 onclick="toggleCollapse('authority-content')">Режим охраняемых территорий FIB</h3>
+    <div class="collapsible-content" id="authority-content">
+            <h4>FIB</h4>
+            <div class="image-container">
+                <img src="https://i.ibb.co/S3ZDxv1/fib-4.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/P4QpmjR/fib-3.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+            </div>
+    </div>
+        <h3 onclick="toggleCollapse('authority-content2')">Режим охраняемых территорий SANG</h3>
+    <div class="collapsible-content" id="authority-content2">
+            <h4>SANG</h4>
+            <div class="image-container">
+                <img src="https://i.ibb.co/Y3BJFJw/sang-3.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/X7ySmdL/sangg2.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/jzLNrC1/4.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+                <img src="https://i.ibb.co/5RQ1zZj/sang-1.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
+            </div>
+    </div>
+</section>
+        
+        <section id="rules">
+            <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo1">
+            <h2>Основные правила проекта</h2>
+            
+            <h3 onclick="toggleCollapse('air-drop-content')">Война за Air Drop</h3>
+            <div class="collapsible-content" id="air-drop-content">
+                <div class="rule-content">
+                    <p><a href="https://forum.majestic-rp.ru/threads/pravila-voiny-za-airdrop.210836/">Тык*</a></p>
+                    <p>1. Запрещено DB. | Ban 3-10 дней / HardBan 7-30 дней.</p>
+                    <p>2. На территории ВЗА запрещено вождение любого транспорта. | Demorgan 30-60 минут.</p>
+                    <p>3. Участники, которые находятся вне зоны ВЗА, обязаны стремиться попасть к AirDrop'у, не задерживаясь на нейтральной территории. | Demorgan 45-90 минут.</p>
+                    <p>4. Запрещено использование heavy sniper, heavy sniper mk2 ,Marksman rifle MK2, тазера, наручников, стяжек, веревок и дронов, ношение тепловизоров. | Demorgan 90 минут / Ban / HardBan 3-5 дней + изъятие предмета.</p>
+                    <p>5. Запрещено покидать игру во время ВЗА. | WARN / HardBan 2-4 дня.</p>
+                    <p>6. Запрещено использование анимаций. | Demorgan 35-90 минут / WARN.
+Исключение: функциональное использование "ползать", "присесть"..</p>
+                    <p>7. Запрещено перехватывать / намеренно удерживать вражескую матовозку. | Demorgan 60-100 минут + изъятие полученного.</p>
+                    <p>8. Государственные силовые структуры могут принимать участие в ВЗА, которое происходит в: 00:00, 04:00, 08:00, 12:00. | Demorgan 45 минут.
+Примечание: все полученные предметы сотрудники государственных организаций обязаны положить на склад, в случае отсутствия данного действия, оно будет расцениваться как слив склада.
+                </p>
+                <p>
+                    9. Окончанием ВЗА считается нахождение 1 фракции / семьи на территории (в конце мероприятия).
+Пояснение: территорией ВЗА считается как функциональная, так и прилегающая к ней зона.
+                </p>
+                </div>
+            </div>
+            
+            <h3 onclick="toggleCollapse('supply-intercept-content')">Правила перехвата поставок</h3>
+            <div class="collapsible-content" id="supply-intercept-content">
+                <div class="rule-content">
+                    <p><a href="https://forum.majestic-rp.ru/threads/pravila-perekhvata-postavok.123972/">Тык*</a></p>
+                    <p>1. Поставка - любое передвижение матовозки, в т.ч. транспортировка / разгрузка / загрузка материалов / созданных предметов из данных материалов, а так же закупаемых предметов, с целью их дальнейшей реализации, переработки и/или продажи.</p>
+
+                    <p>
+2. Минимальное количество участников со стороны гос. фракций - 8 человек. | Demorgan 45 минут / Устный выговор лидерам.
+Примечание: включая SANG.</p>
+                    <p>3. 1.2. Максимальное количество участников со стороны гос. фракций - 40 человек. | Demorgan 45 минут / Устный выговор лидерам.
+Примечание: включая SANG.
+Исключение: окончательное кол-во участников со стороны государственных структур определяется ГА сервера.</p>
+                    <p>4. 3. Запрещено вызывать подкрепление во время нападения на поставку. | Demorgan 60 минут / Устный выговор лидерам. </p>
+                    <p>Исключение: повторное нападение на поставку.</p>
+                    <p>Примечание: вмешательство третьей стороны в ходе одной перестрелки считается повторным нападением. </p>
+                </div>
+            </div>
+
+            <h3 onclick="toggleCollapse('interopll')">Правила захвата цехов / дилеров</h3>
+            <div class="collapsible-content" id="interopll">
+                <div class="rule-content">
+                    <p><a href="https://forum.majestic-rp.ru/threads/pravila-zakhvata-tsekhov-dilerov.1823529/">Тык*</a></p>
+                    <p>2. На мероприятиях действуют все правила сервера.
+Исключение: DM (разрешено убийство лишь причастных к мероприятию), PG, nonRP drive для матовозки, NLR.</p>
+                    <p>3. Запрещено DB. | Ban 3-10 дней / HardBan 7-30 дней.</p>
+                    <p>5. На территории мероприятия запрещена высадка на любые здания, строения, объекты на летной техники. | Demorgan 100 минут.
+Исключение: конец мероприятия. </p>
+                    <p>4. Запрещено использование анимаций. | Demorgan 35-90 минут / WARN.
+Исключение: функциональное использование "ползать", "присесть".</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="useful-links">
+            <h2>Полезные ссылки</h2>
+            
+            <div class="useful-links">
+                <div class="link-card">
+                    <h4>Официальный форум</h4>
+                    <p>Форум проекта Majestic RP с актуальными новостями, обсуждениями и правилами</p>
+                    <a href="https://forum.majestic-rp.ru/" target="_blank">Перейти</a>
+                </div>
+                
+                <div class="link-card">
+                    <h4>FIB Перевод.</h4>
+                    <p>Форма для перевода в другие фракции.</p>
+                    <p>Отслеживать вашу заявку в канале #перевод</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeisQ3BkrVLxSrH1N4ZwPH-pdyoQ-91jLjCSTlLxXRtpDCpWw/viewform?usp=dialog" target="_blank">Заполнить</a>
+                </div>
+                
+                <div class="link-card">
+                    <h4>Discord сервер FIB Рапорт на Увал.</h4>
+                    <p>Официальный Discord сервер фракции FIB для того, чтобы написать Рапорт на Увал.</p>
+                    <p>Отслеживать вашу заявку в канале #рапорт-на-увольнение.</p>
+                    <a href="https://discord.com/channels/1382607727507017739/1382607728702394375/1383931400226340905" target="_blank">Заполнить</a>
+                </div>
+                
+                <div class="link-card">
+                    <h4>FIB Запрос спецухи.</h4>
+                    <p>Запрос дефиков/дронов в FIB</p>
+                    <p>Отслеживать вашу заявку в канале #запрос-спец-вооружения.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBNDrUJKbXqoA-pzm_y2DbFMrpTDih5aiXZDjxFx_3zI7WFw/viewform?usp=dialog" target="_blank">Подробнее</a>
+                </div>
+                
+                <div class="link-card">
+                    <h4>Запрос на Отпуск</h4>
+                    <p>Запрос на АФК</p>
+                    <a href="https://discord.com/channels/1382607727507017739/1383499354806947940" target="_blank">Заполнить</a>
+                </div>
+
+                <div class="link-card">
+                    <h4>Зарос на восстановление</h4>
+                    <p>Отслеживать ваш запрос на восстановление в канале #восстановление</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffiZ1Qp1ZGVC_A2HhPibPSKnm7WuJTQ-FRScRDXeMl1UNi9Q/viewform" target="_blank">Заполнить</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="faq">
+            <h2>Частые вопросы</h2>
+            
+            <h3 onclick="toggleCollapse('promotion-content')">Как повышаться?</h3>
+            <div class="collapsible-content" id="promotion-content">
+                <div class="faq-item">
+                    <p>В Discord сервере есть канал #система-повышений, где подробно описаны все требования для каждого звания.</p>
+                    <p>Для повышения нужно набрать количество баллов и закинуть отчет в канал #отчет-на-повышение.</p>
+                    <a href="https://imgur.com/a/Rq9I2YH">Ссылка на гайд</a>
+                </div>
+            </div>
+
+            <h3 onclick="toggleCollapse('report-rejected-content')">Что делать если отклонили отчет?</h3>
+            <div class="collapsible-content" id="report-rejected-content">
+                <div class="faq-item">
+                    <p>1. Имя/Фамилия/Статик либо не указан, либо указан неверно.</p>
+                    <p>2. Если вы повышаетесь за баллы из канала #благодарность, вы должны предоставить подтверждение того, что действительно были на мероприятии.</p>                   
+                </div>
+            </div>
+
+            <h3 onclick="toggleCollapse('cid-content')">Как попасть в отдел CID?</h3>
+            <div class="collapsible-content" id="cid-content">
+                <div class="faq-item">
+                    <p>Заявки в отдел CID работают, но приходят в другой Discord для секретности.</p>
+                    <p>Примечание: Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                
+                </div>
+            </div>
+
+            <h3 onclick="toggleCollapse('fa-content')">Как попасть в отдел FA?</h3>
+            <div class="collapsible-content" id="fa-content">
+                <div class="faq-item">
+                    <p>Нужно знать правила ПОЙП и правила терактов, вот ссылка <a href="https://forum.majestic-rp.ru/threads/pravila-ograblenii-i-pokhishchenii.8254/">Тык*</a> (Если кто-то ещё не понял — заявку тоже обязательно нужно оставить.)</p>
+                    <p>Примечание: Не нужно писать в личные сообщения куратору или другим хайранам с просьбой рассмотреть вашу заявку — наберитесь терпения.</p>                           
+                </div>
+            </div>
+
+            <h3 onclick="toggleCollapse('points-content')">Будут ли Баллы?</h3>
+            <div class="collapsible-content" id="points-content">
+                <div class="faq-item">
+                    <p>Да, после каждого сбора будут выписаны баллы, и их количество зависит только от вас.</p>
+                    <p>Примечание: Не нужно писать в личные сообщения хайранам с просьбой рассмотреть вашу заявку или дать баллы.</p>                           
+                </div>
+            </div>
+
+            <h3 onclick="toggleCollapse('special-content')">Когда выдадут спецуху?</h3>
+            <div class="collapsible-content" id="special-content">
+                <div class="faq-item">
+                    <p>После того как вам одобрят заявку, storekeeper всех тегнет, когда будет выдача.</p>
+                    <p>Примечание: После того как вы получите спецуху, оставьте отчет здесь: <a href="https://discord.com/channels/1382607727507017739/1382607729142530111">Тык*</a>.</p>                           
+                </div>
+            </div>
+
+            <h3 onclick="toggleCollapse('warehouse-content')">Почему склад с 6-7 ранга?</h3>
+            <div class="collapsible-content" id="warehouse-content">
+                <div class="faq-item">
+                    <p>Людей много, и не всегда есть возможность прокормить всех.</p>                       
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <div id="fullscreen-container" class="uk-fullscreen" style="display: none;">
+        <div class="uk-fullscreen-header">
+            <h3>Уголовный кодекс - Полноэкранный режим</h3>
+            <button class="uk-fullscreen-close" id="fullscreen-close">Закрыть (Esc)</button>
+        </div>
+        <iframe class="uk-fullscreen-iframe" src="https://docs.google.com/spreadsheets/d/1HrPv_uVavBCcfQKVmA7F56NeymB2ql6xBzUmLAEfNwQ/edit?gid=1714153627#gid=1714153627"></iframe>
+    </div>
+    
+    <footer>
+        <p>Done by <a class="Red" href="https://discord.gg/yb2e3BHrcD">Majestic Empire</a> To Majestic RP Phoenix/FIB</p>
+        <p>Контакты: Discord: colepatkins</p>
+        <p>Никакие права не защищены. Несанкционированное копирование материалов разрешено.</p>
+    </footer>
+
+    <script>
+        function toggleCollapse(id) {
+            const content = document.getElementById(id);
+            const header = content.previousElementSibling;
+            
+            event.preventDefault();
+            event.stopPropagation();
+            
+            content.classList.toggle('active');
+            header.classList.toggle('active');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const fullscreenClose = document.getElementById('fullscreen-close');
+            const fullscreenContainer = document.getElementById('fullscreen-container');
+            
+            fullscreenBtn.addEventListener('click', function() {
+                fullscreenContainer.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+            
+            fullscreenClose.addEventListener('click', function() {
+                fullscreenContainer.style.display = 'none';
+                document.body.style.overflow = '';
+            });
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && fullscreenContainer.style.display === 'flex') {
                     fullscreenContainer.style.display = 'none';
                     document.body.style.overflow = '';
-                });
-                
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape' && fullscreenContainer.style.display === 'flex') {
-                        fullscreenContainer.style.display = 'none';
-                        document.body.style.overflow = '';
-                    }
-                });
-                
-                document.querySelectorAll('.nav-links a').forEach(anchor => {
-                    anchor.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if (targetElement) {
-                            const headerOffset = 100;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                            });
-                            
-                            if (history.pushState) {
-                                history.pushState(null, null, targetId);
-                            } else {
-                                location.hash = targetId;
-                            }
-                        }
-                    });
-                });
-            });
-
-            const ADMIN_PASSWORD = 'admin123'; 
-            let isAdmin = false;
-
-
-            function checkAdminStatus() {
-                isAdmin = localStorage.getItem('isAdmin') === 'true';
-                updateUI();
-            }
-
-            function updateUI() {
-                const adminPanel = document.getElementById('adminPanel');
-                const adminLogin = document.getElementById('adminLogin');
-                
-                if (isAdmin) {
-                    adminPanel.style.display = 'block';
-                    adminLogin.style.display = 'none';
-                } else {
-                    adminPanel.style.display = 'none';
-                    adminLogin.style.display = 'block';
-                }
-            }
-
-
-            document.getElementById('loginForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const password = document.getElementById('adminPassword').value;
-                
-                if (password === ADMIN_PASSWORD) {
-                    isAdmin = true;
-                    localStorage.setItem('isAdmin', 'true');
-                    updateUI();
-                } else {
-                    alert('Неверный пароль');
                 }
             });
-
-
-            document.getElementById('postForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const title = document.getElementById('postTitle').value;
-                const description = document.getElementById('postDescription').value;
-                const imageFile = document.getElementById('postImage').files[0];
-                
-                if (!isAdmin) {
-                    alert('Требуются права администратора');
-                    return;
-                }
-
-    
-                const post = {
-                    id: Date.now(),
-                    title,
-                    description,
-                    image: imageFile ? URL.createObjectURL(imageFile) : null,
-                    date: new Date().toLocaleDateString('ru-RU', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    })
-                };
-
-                const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-                posts.push(post);
-                localStorage.setItem('posts', JSON.stringify(posts));
-
-                this.reset();
-
-    
-                displayPosts();
-            });
-
-
-            function displayPosts() {
-                const postsList = document.getElementById('postsList');
-                const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-                
-                postsList.innerHTML = posts.map(post => `
-                    <div class="post-card">
-                        <h4>${post.title}</h4>
-                        <p>${post.description}</p>
-                        ${post.image ? `<img src="${post.image}" alt="Изображение поста">` : ''}
-                        <p class="post-date">Дата публикации: ${post.date}</p>
-                        ${isAdmin ? `
-                            <div class="post-actions">
-                                <button class="delete-btn" onclick="deletePost(${post.id})">Удалить</button>
-                            </div>
-                        ` : ''}
-                    </div>
-                `).join('');
-            }
-
-            function deletePost(id) {
-                if (!isAdmin) {
-                    alert('Требуются права администратора');
-                    return;
-                }
-
-                if (confirm('Вы уверены, что хотите удалить это постановление?')) {
-                    const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-                    const updatedPosts = posts.filter(post => post.id !== id);
-                    localStorage.setItem('posts', JSON.stringify(updatedPosts));
-                    displayPosts();
-                }
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                checkAdminStatus();
-                displayPosts();
-            });
-    
-            function logout() {
-                isAdmin = false;
-                localStorage.removeItem('isAdmin');
-                updateUI();
-                displayPosts(); 
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                const images = document.querySelectorAll('img');
-                images.forEach(img => {
-                    img.addEventListener('load', function() {
-                        this.classList.add('loaded');
-                    });
-                });
-
-                setTimeout(() => {
-                    document.querySelector('.loading').style.display = 'none';
-                }, 1500);
-            });
-
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+            
+            document.querySelectorAll('.nav-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerOffset = 100;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
                         });
+                        
+                        if (history.pushState) {
+                            history.pushState(null, null, targetId);
+                        } else {
+                            location.hash = targetId;
+                        }
                     }
                 });
             });
+        });
+
+        const ADMIN_PASSWORD = 'admin123'; 
+        let isAdmin = false;
 
 
-            document.addEventListener('DOMContentLoaded', function() {
-                const logos = document.querySelectorAll('.logo, .logo1');
-                let rotationTimeout;
+        function checkAdminStatus() {
+            isAdmin = localStorage.getItem('isAdmin') === 'true';
+            updateUI();
+        }
 
-                logos.forEach(logo => {
-                    logo.addEventListener('mouseenter', function() {
-                        clearTimeout(rotationTimeout);
-                        this.style.animation = 'logoRotate 3s linear infinite';
+        function updateUI() {
+            const adminPanel = document.getElementById('adminPanel');
+            const adminLogin = document.getElementById('adminLogin');
+            
+            if (isAdmin) {
+                adminPanel.style.display = 'block';
+                adminLogin.style.display = 'none';
+            } else {
+                adminPanel.style.display = 'none';
+                adminLogin.style.display = 'block';
+            }
+        }
+
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === ADMIN_PASSWORD) {
+                isAdmin = true;
+                localStorage.setItem('isAdmin', 'true');
+                updateUI();
+            } else {
+                alert('Неверный пароль');
+            }
+        });
+
+
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('postTitle').value;
+            const description = document.getElementById('postDescription').value;
+            const imageFile = document.getElementById('postImage').files[0];
+            
+            if (!isAdmin) {
+                alert('Требуются права администратора');
+                return;
+            }
+
+
+            const post = {
+                id: Date.now(),
+                title,
+                description,
+                image: imageFile ? URL.createObjectURL(imageFile) : null,
+                date: new Date().toLocaleDateString('ru-RU', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })
+            };
+
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            this.reset();
+
+
+            displayPosts();
+        });
+
+
+        function displayPosts() {
+            const postsList = document.getElementById('postsList');
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+            
+            postsList.innerHTML = posts.map(post => `
+                <div class="post-card">
+                    <h4>${post.title}</h4>
+                    <p>${post.description}</p>
+                    ${post.image ? `<img src="${post.image}" alt="Изображение поста">` : ''}
+                    <p class="post-date">Дата публикации: ${post.date}</p>
+                    ${isAdmin ? `
+                        <div class="post-actions">
+                            <button class="delete-btn" onclick="deletePost(${post.id})">Удалить</button>
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function deletePost(id) {
+            if (!isAdmin) {
+                alert('Требуются права администратора');
+                return;
+            }
+
+            if (confirm('Вы уверены, что хотите удалить это постановление?')) {
+                const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+                const updatedPosts = posts.filter(post => post.id !== id);
+                localStorage.setItem('posts', JSON.stringify(updatedPosts));
+                displayPosts();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminStatus();
+            displayPosts();
+        });
+
+        function logout() {
+            isAdmin = false;
+            localStorage.removeItem('isAdmin');
+            updateUI();
+            displayPosts(); 
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
+            });
+
+            setTimeout(() => {
+                document.querySelector('.loading').style.display = 'none';
+            }, 1500);
+        });
+
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
-
-                    logo.addEventListener('mouseleave', function() {
-                        const currentRotation = getComputedStyle(this).transform;
-                        const matrix = new DOMMatrix(currentRotation);
-                        const angle = Math.round(Math.atan2(matrix.m21, matrix.m11) * (180/Math.PI));
-                        
-                        this.style.animation = 'none';
-                        this.style.transform = `rotate(${angle}deg)`;
-                        
-                        rotationTimeout = setTimeout(() => {
-                            this.style.transform = 'rotate(0deg)';
-                        }, 500);
-                    });
-                });
-            });
-
-            document.getElementById('uk-table-content').addEventListener('click', function() {
-                toggleCollapse('uk-table-content');
-            });
-
-            document.getElementById('promotion-content').addEventListener('click', function() {
-                toggleCollapse('promotion-content');
-            });
-
-            document.getElementById('report-rejected-content').addEventListener('click', function() {
-                toggleCollapse('report-rejected-content');
-            });
-
-            document.getElementById('cid-content').addEventListener('click', function() {
-                toggleCollapse('cid-content');
-            });
-
-            document.getElementById('fa-content').addEventListener('click', function() {
-                toggleCollapse('fa-content');
-            });
-
-            document.getElementById('points-content').addEventListener('click', function() {
-                toggleCollapse('points-content');
-            });
-
-            document.getElementById('special-content').addEventListener('click', function() {
-                toggleCollapse('special-content');
-            });
-
-            document.getElementById('warehouse-content').addEventListener('click', function() {
-                toggleCollapse('warehouse-content');
-            });
-
-            document.getElementById('guilt-forms-content').addEventListener('click', function() {
-                toggleCollapse('guilt-forms-content');
-            });
-
-            document.getElementById('procedural-knowledge-content').addEventListener('click', function() {
-                toggleCollapse('procedural-knowledge-content');
-            });
-
-            document.getElementById('lawyer-crime-content').addEventListener('click', function() {
-                toggleCollapse('lawyer-crime-content');
-            });
-
-            document.getElementById('common-articles-content').addEventListener('click', function() {
-                toggleCollapse('common-articles-content');
-            });
-
-            var explanationBtn = document.getElementById('explanation-btn');
-            var explanationModal = document.getElementById('explanation-modal');
-            var explanationModalClose = document.getElementById('explanation-modal-close');
-            function openExplanationModal() {
-                explanationModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                setTimeout(function() {
-                    explanationModal.setAttribute('aria-hidden', 'false');
-                }, 10);
-            }
-            function closeExplanationModal() {
-                explanationModal.setAttribute('aria-hidden', 'true');
-                setTimeout(function() {
-                    explanationModal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }, 300);
-            }
-            if (explanationBtn) {
-                explanationBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openExplanationModal();
-                });
-            }
-            if (explanationModalClose) {
-                explanationModalClose.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    closeExplanationModal();
-                });
-            }
-            document.addEventListener('keydown', function(e) {
-                if (explanationModal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
-                    closeExplanationModal();
                 }
             });
-        </script>
-    </body>
-    </html>
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const logos = document.querySelectorAll('.logo, .logo1');
+            let rotationTimeout;
+
+            logos.forEach(logo => {
+                logo.addEventListener('mouseenter', function() {
+                    clearTimeout(rotationTimeout);
+                    this.style.animation = 'logoRotate 3s linear infinite';
+                });
+
+                logo.addEventListener('mouseleave', function() {
+                    const currentRotation = getComputedStyle(this).transform;
+                    const matrix = new DOMMatrix(currentRotation);
+                    const angle = Math.round(Math.atan2(matrix.m21, matrix.m11) * (180/Math.PI));
+                    
+                    this.style.animation = 'none';
+                    this.style.transform = `rotate(${angle}deg)`;
+                    
+                    rotationTimeout = setTimeout(() => {
+                        this.style.transform = 'rotate(0deg)';
+                    }, 500);
+                });
+            });
+        });
+
+        document.getElementById('uk-table-content').addEventListener('click', function() {
+            toggleCollapse('uk-table-content');
+        });
+
+        document.getElementById('promotion-content').addEventListener('click', function() {
+            toggleCollapse('promotion-content');
+        });
+
+        document.getElementById('report-rejected-content').addEventListener('click', function() {
+            toggleCollapse('report-rejected-content');
+        });
+
+        document.getElementById('cid-content').addEventListener('click', function() {
+            toggleCollapse('cid-content');
+        });
+
+        document.getElementById('fa-content').addEventListener('click', function() {
+            toggleCollapse('fa-content');
+        });
+
+        document.getElementById('points-content').addEventListener('click', function() {
+            toggleCollapse('points-content');
+        });
+
+        document.getElementById('special-content').addEventListener('click', function() {
+            toggleCollapse('special-content');
+        });
+
+        document.getElementById('warehouse-content').addEventListener('click', function() {
+            toggleCollapse('warehouse-content');
+        });
+
+        document.getElementById('guilt-forms-content').addEventListener('click', function() {
+            toggleCollapse('guilt-forms-content');
+        });
+
+        document.getElementById('procedural-knowledge-content').addEventListener('click', function() {
+            toggleCollapse('procedural-knowledge-content');
+        });
+
+        document.getElementById('lawyer-crime-content').addEventListener('click', function() {
+            toggleCollapse('lawyer-crime-content');
+        });
+
+        document.getElementById('common-articles-content').addEventListener('click', function() {
+            toggleCollapse('common-articles-content');
+        });
+
+        var explanationBtn = document.getElementById('explanation-btn');
+        var explanationModal = document.getElementById('explanation-modal');
+        var explanationModalClose = document.getElementById('explanation-modal-close');
+        function openExplanationModal() {
+            explanationModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(function() {
+                explanationModal.setAttribute('aria-hidden', 'false');
+            }, 10);
+        }
+        function closeExplanationModal() {
+            explanationModal.setAttribute('aria-hidden', 'true');
+            setTimeout(function() {
+                explanationModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+        if (explanationBtn) {
+            explanationBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openExplanationModal();
+            });
+        }
+        if (explanationModalClose) {
+            explanationModalClose.addEventListener('click', function(e) {
+                e.preventDefault();
+                closeExplanationModal();
+            });
+        }
+        document.addEventListener('keydown', function(e) {
+            if (explanationModal.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
+                closeExplanationModal();
+            }
+        });
+    </script>
+</body>
+</html>
