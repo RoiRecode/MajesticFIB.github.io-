@@ -1158,6 +1158,170 @@
                 padding: 0 0.7rem;
             }
         }
+
+        /* Apple-style Notch Navbar: Logo left, links right, glass/fancy style */
+        .notch-navbar {
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+            background: rgba(20, 30, 50, 0.35);
+            backdrop-filter: blur(18px) saturate(1.5);
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+            border-bottom: 1.5px solid rgba(100,255,218,0.18);
+            padding: 0 2.5vw;
+            transition: background 0.3s;
+        }
+        .notch-logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .fib-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid #64ffda;
+            box-shadow: 0 2px 8px rgba(100,255,218,0.18);
+            background: #fff;
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+        }
+        .fib-icon:hover {
+            transform: scale(1.12) rotate(8deg);
+        }
+        .notch-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s;
+        }
+        .notch-nav-links li a {
+            color: #e0e0e0;
+            font-weight: 600;
+            font-size: 1.08rem;
+            padding: 0.6rem 1.3rem;
+            border-radius: 1.5rem;
+            background: rgba(100,255,218,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .notch-nav-links li a:hover {
+            background: #64ffda;
+            color: #0a192f;
+            box-shadow: 0 4px 16px rgba(100,255,218,0.18);
+        }
+        .notch-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 48px;
+            height: 48px;
+            background: rgba(100,255,218,0.12);
+            border: none;
+            border-radius: 50%;
+            margin-left: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(100,255,218,0.18);
+            transition: background 0.2s;
+            z-index: 10;
+        }
+        .notch-menu-btn:hover {
+            background: #64ffda;
+        }
+        .notch-menu-btn span {
+            display: block;
+            width: 26px;
+            height: 3.5px;
+            background: #e0e0e0;
+            margin: 3.5px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        @media (max-width: 900px) {
+            .notch-navbar {
+                padding: 0 1vw;
+            }
+            .notch-nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(20,30,50,0.95);
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 2rem 0 2.5rem 0;
+                box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+                border-bottom-left-radius: 18px;
+                border-bottom-right-radius: 18px;
+                transform: translateY(-120%);
+                opacity: 0;
+                pointer-events: none;
+            }
+            .notch-nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+                transition: all 0.35s cubic-bezier(.4,0,.2,1);
+            }
+            .notch-menu-btn {
+                display: flex;
+            }
+        }
+
+        .image-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .image-container img {
+            max-width: 1500px;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 1rem 0;
+            display: block;
+        }
+        @media (max-width: 900px) {
+            .image-container {
+                overflow-x: auto;
+                width: 100vw;
+                padding-bottom: 0.5rem;
+            }
+            .image-container img {
+                min-width: 350px;
+                max-width: 95vw;
+                width: 95vw;
+                height: auto;
+            }
+        }
+        @media (max-width: 600px) {
+            .image-container {
+                overflow-x: auto;
+                width: 100vw;
+                padding-bottom: 0.5rem;
+            }
+            .image-container img {
+                min-width: 250px;
+                max-width: 98vw;
+                width: 98vw;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1166,14 +1330,11 @@
         <div class="loading-spinner"></div>
     </div>
 
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="logo">
-            <div class="logo-title-group">
-                <h1>FIB Majestic RP</h1>
-            </div>
+    <nav class="notch-navbar">
+        <div class="notch-logo">
+            <img src="https://i.namu.wiki/i/XXGQFG5MWC7iY75oY2LX3NpGe3eABvGylkrHGbs4Z4IYvb6mHkf04YEzvNuygmuFcGlKefuaEbsucLLevyvWow.webp" alt="FIB" class="fib-icon">
         </div>
-        <ul class="nav-links">
+        <ul class="notch-nav-links" id="notchNavLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#legislation">Законодательная база</a></li>
             <li><a href="#uk">Уголовный кодекс</a></li>
@@ -1181,8 +1342,58 @@
             <li><a href="#useful-links">Полезные ссылки</a></li>
             <li><a href="#faq">Частые вопросы</a></li>
         </ul>
+        <button class="notch-menu-btn" id="notchMenuBtn" aria-label="Открыть меню">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
-    
+
+    <style>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('notchMenuBtn');
+        const navLinks = document.getElementById('notchNavLinks');
+        let open = false;
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                open = !open;
+                navLinks.classList.toggle('open', open);
+                menuBtn.classList.toggle('active', open);
+            });
+            document.addEventListener('click', function(e) {
+                if (open && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                    navLinks.classList.remove('open');
+                    menuBtn.classList.remove('active');
+                    open = false;
+                }
+            });
+        }
+    });
+    </style>
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('notchMenuBtn');
+        const navLinks = document.getElementById('notchNavLinks');
+        let open = false;
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                open = !open;
+                navLinks.classList.toggle('open', open);
+                menuBtn.classList.toggle('active', open);
+            });
+            document.addEventListener('click', function(e) {
+                if (open && !navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                    navLinks.classList.remove('open');
+                    menuBtn.classList.remove('active');
+                    open = false;
+                }
+            });
+        }
+    });
+    </script>
+
     <div class="container">
         <section id="home">
             <h2>Добро пожаловать в Федеральное Бюро Расследований</h2>
