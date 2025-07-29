@@ -369,9 +369,7 @@
             margin-bottom: 1rem;
             border-radius: 4px;
         }
-        .red {
-            color: red;
-        }
+        
         a {
             color: var(--accent);
             text-decoration: none;
@@ -1343,6 +1341,7 @@
             <li><a href="#rules">Основные правила</a></li>
             <li><a href="#useful-links">Полезные ссылки</a></li>
             <li><a href="#faq">Частые вопросы</a></li>
+            <li><a href="#video-guide">Guide</a></li>
         </ul>
         <button class="notch-menu-btn" id="notchMenuBtn" aria-label="Открыть меню">
             <span></span><span></span><span></span>
@@ -1518,6 +1517,7 @@
                         <p><strong>Примечание:</strong> Для преступлений против правосудия (в т.ч. действий адвокатов) часто требуется специальный субъект - лицо, использующее свои профессиональные полномочия.</p>
                     </div>
                     
+                    <!-- Section 2: Формы вины -->
                     <h3 onclick="toggleCollapse('guilt-forms-content')" class="important-button">Формы вины</h3>
                     <div class="collapsible-content" id="guilt-forms-content">
                         <div class="composition-section">
@@ -1562,6 +1562,36 @@
                                         <div class="item">Не предвидел наступления общественно опасного вреда</div>
                                         <div class="item">Но мог и должен был предвидеть</div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Section 3: Следственные действия (hidden under Формы вины) -->
+                        <h3 onclick="toggleCollapse('investigation-actions-content')" class="important-button">Следственные действия</h3>
+                        <div class="collapsible-content" id="investigation-actions-content">
+                            <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+                                <div style="flex:1; min-width: 260px; max-width: 400px; background: var(--gray); border: 2px solid var(--accent); border-radius: 8px; box-shadow: 0 4px 16px var(--shadow); padding: 1.5rem; margin-bottom: 1rem;">
+                                    <div style="font-weight: 700; color: var(--accent); font-size: 1.2rem; margin-bottom: 1rem;">Процессуальные действия</div>
+                                    <ul style="color: var(--text-light);">
+                                        <li>а) Допрос</li>
+                                        <li>б) Осмотр</li>
+                                        <li>в) Обыск</li>
+                                        <li>г) Выемка</li>
+                                        <li>д) Очная ставка</li>
+                                        <li>е) Опознание</li>
+                                        <li>ё) Освидетельствование</li>
+                                    </ul>
+                                </div>
+                                <div style="flex:1; min-width: 260px; max-width: 400px; background: var(--gray); border: 2px solid var(--accent); border-radius: 8px; box-shadow: 0 4px 16px var(--shadow); padding: 1.5rem; margin-bottom: 1rem;">
+                                    <div style="font-weight: 700; color: var(--accent); font-size: 1.2rem; margin-bottom: 1rem;">Оперативные и иные действия</div>
+                                    <ul style="color: var(--text-light);">
+                                        <li>ж) Проверка показаний</li>
+                                        <li>з) Производство судебной экспертизы</li>
+                                        <li>и) Контроль и запись переговоров</li>
+                                        <li>й) Следственный эксперимент</li>
+                                        <li>к) Возбуждение дела (принятие заявления или фиксация нарушения)</li>
+                                        <li>л) Оперативно-розыскные мероприятия</li>
+                                        <li>м) Задержание</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -1668,16 +1698,6 @@
     <h3 onclick="toggleCollapse('authority-content')">Режим охраняемых территорий FIB</h3>
     <div class="collapsible-content" id="authority-content">
             <h4>FIB</h4>
-            <h2>Внимание! Офис FIB. Имеют доступ:</h3>
-            <ul>
-                <li>руководство сотрудников государственных органов в случае задержания их подчиненных по вызову сотрудников,производящих процесс задержания</li>
-                <li>служащие органов правопорядка и военных органов в сопровождении руководства ФРБ.​</li>
-                <li> сотрудники Офиса Генерального прокурора</li>
-                <li>частные и государственные адвокаты только на территории КПЗ и направляясь в/из КПЗ</li>
-                <b><li class="red"> сотрудники правоохранительных структур во время проведения процессуальных действий</li></b>
-                <b><p class="red">Процессуальные действия – предусмотренные настоящим Кодексом и производимые в соответствии с его положениями действия управомоченных на это должностных лиц</p></b>
-            </ul>
-            <b><h2 class="red">Внимание! Здесь самое важное. Остальное читайте на Форуме.</h2></b>
             <div class="image-container">
                 <img src="https://i.ibb.co/S3ZDxv1/fib-4.png" alt="LSPD" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
                 <img src="https://i.ibb.co/P4QpmjR/fib-3.png" alt="" style="max-width: 1500px; border-radius: 4px; margin: 1rem 0;">
@@ -1881,6 +1901,18 @@
                 </div>
             </div>
         </section>
+       <div id="video-guide" style="display: flex; justify-content: center; align-items: center; margin: 2rem 0;">
+           <div style="background: var(--gray); border: 2px solid var(--accent); border-radius: 12px; box-shadow: 0 8px 32px 0 var(--shadow); padding: 2rem; max-width: 700px; width: 100%;">
+               <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius: 8px; box-shadow: 0 4px 16px var(--shadow);">
+                   <iframe src="https://www.youtube.com/embed/dnrI5XNu6dE"
+                           frameborder="0"
+                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                           allowfullscreen
+                        style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius: 8px;"></iframe>
+              </div>
+              <div style="text-align:center; margin-top: 1rem; color: var(--text-light); font-size: 1.1rem;">Видеогайд</div>
+           </div>
+       </div>
     </div>
     
     <div id="fullscreen-container" class="uk-fullscreen" style="display: none;">
